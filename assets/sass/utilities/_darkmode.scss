@@ -1,0 +1,30 @@
+.html--dark-mode {
+    color: $background-light;
+    background: $background-dark;
+    transition: background linear .25s,
+        color linear .25s;
+
+    .header__mode {
+        transition: border .25s linear;
+        border: 0.2rem solid $background-light;
+
+        &__dot {
+            transition: all .25s ease;
+            right: 0;
+            left: 2.5rem;
+            background: $background-light;
+
+            &__svg {
+                fill: $background-dark;
+            }
+        }
+    }
+    .second-section{
+        @include waves(black);
+    }
+}
+@media screen and (max-width: 1023px) {
+    .html--dark-mode .header__mode__dot__svg{
+        fill: $main-color;
+    }
+}

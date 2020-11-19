@@ -4,8 +4,15 @@
   "description": "Juan Afanador's portfolio",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "dev": "nodemon app"
+    "dev": "sass --watch --no-source-map --style=compressed assets/sass/:assets/css/",
+    "build": "npm run compile-sass && npm run prefix && npm run minify-html && npm run minify-css && npm run minify-js && npm run minify-svg && npm run optimize-svg",
+    "compile-sass": "sass --no-source-map --style=compressed assets/sass/:assets/css/",
+    "prefix": "postcss **/*.css --use autoprefixer --no-map --replace",
+    "minify-html": "html-minifier --input-dir ./ --output-dir ./ --collapse-whitespace --file-ext html --minify-css true --minify-js true",
+    "minify-css": "html-minifier --input-dir ./assets --output-dir ./assets --collapse-whitespace --file-ext css --minify-css true --minify-js true",
+    "minify-js": "html-minifier --input-dir ./assets --output-dir ./assets --collapse-whitespace --file-ext js --minify-css true --minify-js true",
+    "minify-svg": "html-minifier --input-dir ./assets --output-dir ./assets --collapse-whitespace --file-ext svg --minify-css true --minify-js true",
+    "optimize-svg": "svgo -f assets/img/"
   },
   "browserslist": [
     "> 0%",
@@ -14,12 +21,11 @@
   "author": "Juan David Afanador",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.10.15",
-    "nodemailer": "^6.4.16"
+    "autoprefixer": "^10.0.2",
+    "html-minifier": "^4.0.0",
+    "postcss": "^8.1.7",
+    "postcss-cli": "^8.3.0",
+    "sass": "^1.29.0",
+    "svgo": "^1.3.2"
   }
 }

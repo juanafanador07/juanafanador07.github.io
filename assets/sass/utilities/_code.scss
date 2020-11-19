@@ -1,0 +1,21 @@
+.code{
+    &__tab{
+        display: inline-block;
+        width: 1.5rem;
+    }
+    &__variable{
+        color: $variable-light;
+    }
+    &__function{
+        color: $function-light;
+    }
+    &__class{
+        color: $class-light;
+    }
+    &__name{
+        color: $name-light;
+    }
+    &__string{
+        color: $string-light;
+    }
+}
