@@ -76,4 +76,10 @@ router.post("/", async (req, res) => {
 
 });
 
+router.post("/revive", (req,res)=>{
+    res.send({
+        alive: true
+    });
+})
+
 module.exports = router;
