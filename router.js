@@ -1,8 +1,17 @@
 const express = require("express");
 const ejs = require("ejs");
 const nodemailer = require('nodemailer');
+const Joi = require('joi');
 const Message = require(__dirname + "/models/message");
 const router = express.Router();
+
+const JoiMessageSchema = Joi.object({
+    name: Joi.string().min(3).max(255).pattern(/^[a-zA-Z]+$/).required(),
+    email: Joi.string().min(3).max(255).email().required(),
+    subject: Joi.string().required(),
+    message: Joi.string().required(),
+    script: Joi.string().required()
+})
 
 function ejsRenderFile(path, options) {
     let data;
@@ -28,12 +37,16 @@ const transporter = nodemailer.createTransport({
 /*Router*/
 router.post("/", async (req, res) => {
     const body = req.body;
-    const name = req.body.name;
-    const email = req.body.email;
-    const subject = req.body.subject;
-    const message = req.body.message;
-
+    const name = body.name;
+    const email = body.email;
+    const subject = body.subject;
+    const message = body.message;
+    const script = body.script;
     try {
+        /*Verificate inputs*/
+        await JoiMessageSchema.validateAsync(body);
+        
+        /*Add to Database*/
         await Message.create(body);
 
         /*Send Email*/
@@ -66,19 +79,26 @@ router.post("/", async (req, res) => {
             })
         });
 
-        res.redirect("/");
+        if (script == "true") {
+            return res.send({
+                status: "Mensaje enviado correctamente"
+            })
+        }
+
+        return res.redirect(301, "https://" + process.env.PORTFOLIO);
 
     } catch (error) {
-        res.json({
-            message: 'Error al enviar el mensaje: ' + error
+        console.log(error);
+        return res.json({
+            status: error.details[0].message
         })
     }
 
 });
 
-router.post("/revive", (req,res)=>{
+router.post("/revive", (req, res) => {
     res.send({
-        alive: true
+        status: "Server prepared to receive requests"
     });
 })
 

@@ -13,9 +13,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 /*Conexión a MongoDB*/
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster.rbg6u.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-
-mongoose.connect(uri, {
+mongoose.connect(process.env.DB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
@@ -28,17 +26,17 @@ mongoose.connect(uri, {
 
 /*CORS*/
 app.use(cors({
-    "origin": "https://juanafanador07.github.io",
+    "origin": process.env.PORTFOLIO,
     "methods": "POST",
     "preflightContinue": false,
     "optionsSuccessStatus": 204
-  }));
-   
+}));
+
 /*Redirect http to https*/
 app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'production') {
         if (req.headers['x-forwarded-proto'] !== 'https') {
-            return res.redirect('https://' + req.headers.host + req.url);
+            return res.redirect(301, 'https://' + req.headers.host + req.url);
         } else {
             return next();
         }
@@ -52,7 +50,7 @@ app.use('/', require(__dirname + '/router'));
 
 /*Redirections*/
 app.use((req, res) => {
-    res.redirect(301, "https://juanafanador07.github.io" + req.url);
+    return res.redirect(301, "https://" + process.env.PORTFOLIO + req.url);
 })
 
 /*Configuración de Puerto*/
