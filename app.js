@@ -10,7 +10,8 @@ app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
-}))
+}));
+app.disable('x-powered-by');
 
 /*Conexión a MongoDB*/
 mongoose.connect(process.env.DB_URI, {
@@ -26,10 +27,10 @@ mongoose.connect(process.env.DB_URI, {
 
 /*CORS*/
 app.use(cors({
-    "origin": process.env.PORTFOLIO,
+    "origin": "https://" + process.env.PORTFOLIO,
     "methods": "POST",
     "preflightContinue": false,
-    "optionsSuccessStatus": 204
+    "optionsSuccessStatus": 200
 }));
 
 /*Redirect http to https*/
