@@ -6,7 +6,7 @@ const Message = require(__dirname + "/models/message");
 const router = express.Router();
 
 const JoiMessageSchema = Joi.object({
-    name: Joi.string().min(3).max(255).pattern(/^[a-zA-Z]+$/).required(),
+    name: Joi.string().min(3).max(255).pattern(/^[a-zA-Z ]+$/).required(),
     email: Joi.string().min(3).max(255).email().required(),
     subject: Joi.string().required(),
     message: Joi.string().required(),
@@ -42,11 +42,13 @@ router.post("/", async (req, res) => {
     const subject = body.subject;
     const message = body.message;
     const script = body.script;
+
     try {
         /*Verificate inputs*/
         await JoiMessageSchema.validateAsync(body);
         
         /*Add to Database*/
+        body.date = new Date(Date.now());
         await Message.create(body);
 
         /*Send Email*/

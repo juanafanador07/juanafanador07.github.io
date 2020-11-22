@@ -6,6 +6,7 @@ const messageSchema = new Schema({
   email: String,
   subject: String,
   message: String,
+  date: Date
 });
 
 // Crear el modelo
