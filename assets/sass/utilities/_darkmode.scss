@@ -19,12 +19,45 @@
             }
         }
     }
-    .second-section{
-        @include waves(black);
+
+    .second-section {
+        &__content__left {
+            color: $background-light;
+            background: $vscode-background-dark;
+        }
+
+        @include waves("15202B");
+    }
+
+    .code {
+        &__variable {
+            color: $vscode-variable-dark;
+        }
+
+        &__name {
+            color: $vscode-name-dark;
+        }
+
+        &__string {
+            color: $vscode-string-dark;
+        }
+
+        &__class {
+            color: $vscode-class-dark;
+        }
+
+        &__function {
+            color: $vscode-function-dark;
+        }
+
+        &__number {
+            color: $vscode-number-dark;
+        }
     }
 }
+
 @media screen and (max-width: 1023px) {
-    .html--dark-mode .header__mode__dot__svg{
+    .html--dark-mode .header__mode__dot__svg {
         fill: $main-color;
     }
 }

@@ -3,9 +3,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    position: absolute;
-    top: 0;
-    z-index: 1;
 
     &__checkbox {
         display: none;
@@ -87,6 +84,7 @@
 
 @media screen and (max-width: 1023px) {
     .header {
+        height: 5.5rem;
 
         &__label {
             display: inline-flex;
@@ -156,7 +154,7 @@
             z-index: 9999;
             top: -100vh;
             position: fixed;
-            
+
             left: 1.5rem;
             border: 0.2rem solid $background-light;
 
@@ -212,10 +210,11 @@
                 }
             }
         }
+
         &__checkbox:checked~&__mode {
             top: 1.5rem;
             opacity: 1;
-            transition: opacity 0.25s,top 0.25s;
+            transition: opacity 0.25s, top 0.25s;
         }
 
     }

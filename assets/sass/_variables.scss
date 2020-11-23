@@ -1,22 +1,22 @@
-$main-color: #17BF63;
-
-//$main-color: darken($green-color, 5%);
-
-$background-light: #FFF;
+$main-color:#28a745;
+$background-light: #fefefe;
 $background-dark: #15202B;
-$transparent: rgba(0,0,0,0);
+$transparent: rgba(0, 0, 0, 0);
 
 //vscode light color
-$variable-light: #0000FF;
-$name-light: #001080;
-$string-light:#A31515;
-$class-light: #267F99;
-$function-light: #795E26;
-$number-light: #098658;
+$vscode-variable-light: #0000FF;
+$vscode-name-light: #001080;
+$vscode-string-light:#A31515;
+$vscode-class-light: #267F99;
+$vscode-function-light: #795E26;
+$vscode-number-light: #098658;
+$vscode-background-light: #fff;
+
 //vscode dark color
-$variable-dark: #0000FF;
-$name-dark: #001080;
-$string-dark:#A31515;
-$class-dark: #267F99;
-$function-dark: #795E26;
-$number-dark: #098658;
+$vscode-variable-dark: #569CD6;
+$vscode-name-dark: #9CDCFE;
+$vscode-string-dark:#CE9178;
+$vscode-class-dark: #4EC9B0;
+$vscode-function-dark: #DCDCAA;
+$vscode-number-dark: #B5CEA8;
+$vscode-background-dark: #1E1E1E;

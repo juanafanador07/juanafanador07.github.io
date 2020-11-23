@@ -4,18 +4,18 @@
         width: 1.5rem;
     }
     &__variable{
-        color: $variable-light;
+        color: $vscode-variable-light;
     }
     &__function{
-        color: $function-light;
+        color: $vscode-function-light;
     }
     &__class{
-        color: $class-light;
+        color: $vscode-class-light;
     }
     &__name{
-        color: $name-light;
+        color: $vscode-name-light;
     }
     &__string{
-        color: $string-light;
+        color: $vscode-string-light;
     }
 }

@@ -17,6 +17,7 @@ html,body,header,input,label,div,nav,a,section,p,h1,h2,svg,path {
 html {
     font-family: 'Exo', sans-serif;
     color: $background-dark;
+    background: $background-light;
     transition: background linear .25s,
     color linear .25s;
 }
