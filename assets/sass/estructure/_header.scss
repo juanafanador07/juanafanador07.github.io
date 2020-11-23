@@ -20,7 +20,7 @@
             color: $main-color;
             padding: 0.5rem 2rem;
             margin: 1.25rem 1rem;
-            font-size: 1.563rem;
+            font-size: $text;
             border-radius: 5rem;
 
             &:hover {
@@ -179,7 +179,7 @@
                 color: $background-light;
                 padding: 0.5rem 2rem;
                 margin: 1.563rem 0;
-                font-size: 1.563em;
+                font-size: $text;
                 border-radius: 5rem;
             }
         }

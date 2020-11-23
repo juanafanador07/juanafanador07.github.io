@@ -3,6 +3,17 @@ $background-light: #fefefe;
 $background-dark: #15202B;
 $transparent: rgba(0, 0, 0, 0);
 
+//font-size
+$text: 1.2rem;
+$h1: 2.4rem;
+$h2: 2.4rem;
+$h3: 1.5rem;
+
+$text-sm: $text*83/100;
+$h1-sm: $h1*83/100;
+$h2-sm: $h2*83/100;
+$h3-sm: $h3*83/100;
+
 //vscode light color
 $vscode-variable-light: #0000FF;
 $vscode-name-light: #001080;

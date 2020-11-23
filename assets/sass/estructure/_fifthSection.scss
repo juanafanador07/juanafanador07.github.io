@@ -17,13 +17,13 @@
         padding: 2rem;
 
         &__title {
-            font-size: 3rem;
+            font-size: $h2;
             text-align: center;
             color: $main-color;
         }
 
         &__input {
-            font-size: 1.5625rem;
+            font-size: $text;
             box-sizing: border-box;
             font-family: 'Exo', sans-serif;
             width: 100%;
@@ -34,7 +34,7 @@
         }
 
         &__textarea {
-            font-size: 1.5625rem;
+            font-size: $text;
             box-sizing: border-box;
             font-family: 'Exo', sans-serif;
             display: block;
@@ -47,7 +47,7 @@
         }
 
         &__submit {
-            font-size: 1.5625rem;
+            font-size: $text;
             font-family: 'Exo', sans-serif;
             color: $background-light;
             margin: .5rem 25%;
@@ -77,6 +77,21 @@
         &__form {
             box-sizing: border-box;
             width: 90%;
+
+            &__title{
+                font-size: $h2-sm;
+            }
+            &__input {
+                font-size: $text-sm;
+            }
+    
+            &__textarea {
+                font-size: $text-sm;
+            }
+    
+            &__submit {
+                font-size: $text-sm;
+            }
         }
 
         &__svg {
