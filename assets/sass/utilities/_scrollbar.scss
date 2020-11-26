@@ -3,35 +3,15 @@
     height: 0.8vw;
 
     &-thumb {
-        background: lighten($main-color, 30%);
+        background: darken($background-light, 15%);
         border-radius: 5rem;
 
         &:hover {
-            background: lighten($main-color, 10%);
+            background: darken($background-light, 30%);
         }
     }
 
     &-track {
         background: $background-light;
-    }
-}
-
-::-webkit-scrollbar {
-    width: 0.625em;
-    background-color: white;
-
-    &-track{
-        display: none;
-    }
-    &-thumb{
-        background-color: #D0D3D4;
-        -webkit-border-radius: 0.313em;
-        border-radius: 0.313em;
-        &:hover{
-            background-color: #B3B6B7;
-        }
-        &:active{
-            background-color: #979A9A;
-        }
     }
 }

@@ -54,6 +54,40 @@
             color: $vscode-number-dark;
         }
     }
+
+    .fifth-section {
+        &__form {
+            background: lighten($background-dark, 1%);
+
+            ::placeholder {
+                color: darken($background-light, 25%);
+                opacity: 1;
+            }
+
+            &__input {
+                background: lighten($background-dark, 10%);
+                color: $background-light;
+            }
+
+            &__textarea {
+                background: lighten($background-dark, 10%);
+                color: $background-light;
+            }
+        }
+    }
+    ::-webkit-scrollbar {
+        &-thumb {
+            background: lighten($background-dark, 15%);
+    
+            &:hover {
+                background: lighten($background-dark, 25%);
+            }
+        }
+    
+        &-track {
+            background: $background-dark;
+        }
+    }
 }
 
 @media screen and (max-width: 1023px) {
