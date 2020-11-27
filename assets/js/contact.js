@@ -3,8 +3,6 @@ const script = document.querySelector('[name="script"]');
 const messageContainer = document.querySelector(".fifth-section__form__message");
 script.value = "true";
 
-form.addEventListener("submit", submit);
-
 async function submit(e) {
     e.preventDefault();
 
@@ -37,5 +35,16 @@ async function submit(e) {
     }
     messageContainer.classList.remove("hidden");
     messageContainer.innerText = res.status
-
 }
+
+async function awakeServer() {
+    form.name.removeEventListener("keyup", awakeServer)
+    let data = await fetch(`${form.action}revive`, {
+        method: "post",
+    });
+    let res = await data.json();
+    console.log(res);
+}
+
+form.addEventListener("submit", submit);
+form.name.addEventListener("keyup", awakeServer)
