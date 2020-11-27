@@ -1,5 +1,6 @@
 const form = document.querySelector(".fifth-section__form");
 const script = document.querySelector('[name="script"]');
+const messageContainer = document.querySelector(".fifth-section__form__message");
 script.value = "true";
 
 form.addEventListener("submit", submit);
@@ -29,6 +30,12 @@ async function submit(e) {
 
     let res = await data.json();
 
-    console.log(res)
+    if (res.error == true) {
+        messageContainer.classList.add("error");
+    } else {
+        messageContainer.classList.remove("error");
+    }
+    messageContainer.classList.remove("hidden");
+    messageContainer.innerText = res.status
 
 }

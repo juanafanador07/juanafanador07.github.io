@@ -23,7 +23,7 @@
         }
 
         &__input {
-            font-size: $text;
+            font-size: 1rem;
             box-sizing: border-box;
             font-family: 'Exo', sans-serif;
             width: 100%;
@@ -31,10 +31,11 @@
             background: darken($background-light, 5%);
             border-radius: 2rem;
             padding: .75rem 1rem;
+            margin-bottom: 1rem;
         }
 
         &__textarea {
-            font-size: $text;
+            font-size: 1rem;
             box-sizing: border-box;
             font-family: 'Exo', sans-serif;
             display: block;
@@ -44,6 +45,9 @@
             background: darken($background-light, 5%);
             border-radius: 1rem;
             padding: 1rem;
+        }
+        &__label{
+            font-size: 1rem;
         }
 
         &__submit {
@@ -56,10 +60,36 @@
             background: $main-color;
             padding: .75rem 2rem;
             border-radius: 2rem;
+
+            &:hover{
+                cursor: pointer;
+                background: darken($main-color, 5%);
+            }
+            &:active{
+                box-shadow: 0 0 0 0.2rem rgba($main-color,.5);
+            }
         }
-        &__hidden{
+
+        &__hidden {
             width: 0;
             height: 0;
+        }
+
+        &__message {
+            border-radius: 1rem;
+            padding: 1rem;
+            color: $background-light;
+            text-align: center;
+            
+            &.hidden {
+                display: none;
+            }
+
+            &.error {
+                background: $background-error;
+            }
+
+            background: $main-color;
         }
     }
 
@@ -82,17 +112,18 @@
             box-sizing: border-box;
             width: 90%;
 
-            &__title{
+            &__title {
                 font-size: $h2-sm;
             }
+
             &__input {
                 font-size: $text-sm;
             }
-    
+
             &__textarea {
                 font-size: $text-sm;
             }
-    
+
             &__submit {
                 font-size: $text-sm;
             }
