@@ -1,17 +1,9 @@
 const express = require("express");
 const ejs = require("ejs");
 const nodemailer = require('nodemailer');
-const Joi = require('joi');
 const Message = require(__dirname + "/models/message");
 const router = express.Router();
-
-const JoiMessageSchema = Joi.object({
-    name: Joi.string().min(3).max(255).pattern(/^[a-zA-Z ]+$/).required(),
-    email: Joi.string().min(3).max(255).email().required(),
-    message: Joi.string().required(),
-    script: Joi.string().valid('true', 'false').required(),
-    honey: Joi.string().valid('').required()
-})
+const JoiMessageSchema = require("./MessagePattern");
 
 function ejsRenderFile(path, options) {
     let data;
@@ -44,7 +36,7 @@ router.post("/", async (req, res) => {
 
     try {
         /*Verificate inputs*/
-        await JoiMessageSchema.validateAsync(body);
+        await JoiMessageSchema.schema.validateAsync(body);
 
         /*Add to Database*/
         body.date = new Date(Date.now());
@@ -55,12 +47,8 @@ router.post("/", async (req, res) => {
             from: process.env.GOOGLE_USER,
             to: email,
             subject: 'Message Sent',
-            text: ejsRenderFile("mail/messageSentText.ejs", {
-                name
-            }),
-            html: ejsRenderFile("mail/messageSent.ejs", {
-                name
-            })
+            text: ejsRenderFile("mail/messageSentText.ejs", body),
+            html: ejsRenderFile("mail/messageSent.ejs", body)
         });
 
         /*Notify to me*/
@@ -71,15 +59,12 @@ router.post("/", async (req, res) => {
             text: `Nombre: ${name}
             Correo: ${email}
             Mensaje: ${message}`,
-            html: ejsRenderFile("mail/notification.ejs", {
-                name,
-                email,
-                message,
-            })
+            html: ejsRenderFile("mail/notification.ejs", body)
         });
 
         if (script == "true") {
             return res.send({
+                error: false,
                 status: "Mensaje enviado correctamente"
             })
         }
@@ -87,17 +72,14 @@ router.post("/", async (req, res) => {
         return res.redirect(301, "https://" + process.env.PORTFOLIO);
 
     } catch (error) {
-        console.log(error);
-        return res.json({
-            status: error.details[0].message
-        })
+        return res.send(JoiMessageSchema.manageError(error))
     }
 
 });
 
 router.post("/revive", (req, res) => {
     res.send({
-        status: "Server prepared to receive requests"
+        status: true
     });
 })
 
