@@ -28,7 +28,13 @@
                 background: $main-color;
                 transition:
                     color .25s ease,
+                    box-shadow .1s ease,
                     background .25s ease;
+            }
+
+            &:active {
+                box-shadow: 0 0 0 0.2rem rgba($main-color, .5);
+                transition: box-shadow .1s ease;
             }
         }
     }

@@ -58,13 +58,22 @@
                 }
 
                 &:hover {
-                    transition: background ease .25s;
+                    transition:
+                        background ease .25s,
+                        box-shadow .1s ease;
                     background: white;
 
                     .fourth-section__card__right__link__svg {
                         fill: $main-color;
                         transition: fill ease .25s;
                     }
+                }
+
+                &:active {
+                    box-shadow: 0 0 0 0.2rem rgba($background-light, .5);
+                    transition:
+                        background ease 0.25s,
+                        box-shadow .1s ease;
                 }
             }
         }

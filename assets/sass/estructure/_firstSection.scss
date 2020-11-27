@@ -36,12 +36,21 @@
 
                 &:hover {
                     background: $main-color;
-                    transition: background ease 0.25s;
+                    transition:
+                        box-shadow .1s ease,
+                        background ease 0.25s;
 
                     .first-section__content__left__links__a__svg {
                         fill: white;
                         transition: fill ease 0.25s;
                     }
+                }
+
+                &:active {
+                    box-shadow: 0 0 0 0.2rem rgba($main-color, .5);
+                    transition:
+                        background ease 0.25s,
+                        box-shadow .1s ease;
                 }
 
                 &__svg {

@@ -46,7 +46,8 @@
             border-radius: 1rem;
             padding: 1rem;
         }
-        &__label{
+
+        &__label {
             font-size: 1rem;
         }
 
@@ -61,12 +62,19 @@
             padding: .75rem 2rem;
             border-radius: 2rem;
 
-            &:hover{
+            &:hover {
                 cursor: pointer;
                 background: darken($main-color, 5%);
+                transition:
+                    box-shadow .1s ease,
+                    background .25s ease;
             }
-            &:active{
-                box-shadow: 0 0 0 0.2rem rgba($main-color,.5);
+
+            &:active {
+                box-shadow: 0 0 0 0.2rem rgba($main-color, .5);
+                transition:
+                    box-shadow .1s ease,
+                    background .25s ease;
             }
         }
 
@@ -80,7 +88,7 @@
             padding: 1rem;
             color: $background-light;
             text-align: center;
-            
+
             &.hidden {
                 display: none;
             }
