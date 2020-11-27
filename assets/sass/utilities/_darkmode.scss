@@ -75,15 +75,16 @@
             }
         }
     }
+
     ::-webkit-scrollbar {
         &-thumb {
             background: lighten($background-dark, 15%);
-    
+
             &:hover {
                 background: lighten($background-dark, 25%);
             }
         }
-    
+
         &-track {
             background: $background-dark;
         }
