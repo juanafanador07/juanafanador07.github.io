@@ -38,7 +38,7 @@ async function submit(e) {
 }
 
 async function awakeServer() {
-    form.name.removeEventListener("keyup", awakeServer)
+    form.name.removeEventListener("keyup", awakeServer);
     let data = await fetch(`${form.action}revive`, {
         method: "post",
     });
