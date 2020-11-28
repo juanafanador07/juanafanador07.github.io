@@ -1,7 +1,6 @@
 const form = document.querySelector(".fifth-section__form");
-const script = document.querySelector('[name="script"]');
 const messageContainer = document.querySelector(".fifth-section__form__message");
-script.value = "true";
+form.script.value = "true";
 
 async function submit(e) {
     e.preventDefault();

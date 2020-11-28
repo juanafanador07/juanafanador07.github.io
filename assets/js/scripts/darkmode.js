@@ -1,7 +1,4 @@
-let html = document.querySelector("html");
-let header = document.querySelector(".header");
-
-header.innerHTML += `
+document.querySelector(".header").innerHTML += `
 <div class="header__mode">
 <div class="header__mode__dot">
     <svg aria-hidden="true" focusable="false"
@@ -30,6 +27,8 @@ button.addEventListener("click", function () {
 });
 
 function toggleTheme(theme) {
+    let html = document.querySelector("html");
+
     if (theme === "dark") {
         html.classList.add("html--dark-mode");
         /*Moon*/
