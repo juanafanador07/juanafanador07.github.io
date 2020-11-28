@@ -5,9 +5,10 @@
   "main": "app.js",
   "scripts": {
     "dev": "sass --watch --no-source-map --style=compressed assets/sass/:assets/css/",
-    "build": "npm run compile-sass && npm run prefix && npm run minify-html && npm run minify-css && npm run minify-js && npm run minify-svg && npm run optimize-svg",
+    "build": "npm run compile-sass && npm run prefix && npm run minify-html && npm run minify-css && npm run minify-js && npm run minify-svg && npm run merge-js && npm run optimize-svg",
     "compile-sass": "sass --no-source-map --style=compressed assets/sass/:assets/css/",
-    "prefix": "postcss **/*.css --use autoprefixer --no-map --replace",
+    "prefix": "postcss ./assets/**/*.css --use autoprefixer --no-map --replace",
+    "merge-js": "browserify assets/js/scripts/contact.js assets/js/scripts/darkmode.js assets/js/scripts/scroll.js > assets/js/main.js",
     "minify-html": "html-minifier --input-dir ./ --output-dir ./ --collapse-whitespace --file-ext html --minify-css true --minify-js true",
     "minify-css": "html-minifier --input-dir ./assets --output-dir ./assets --collapse-whitespace --file-ext css --minify-css true --minify-js true",
     "minify-js": "html-minifier --input-dir ./assets --output-dir ./assets --collapse-whitespace --file-ext js --minify-css true --minify-js true",
@@ -20,8 +21,9 @@
   ],
   "author": "Juan David Afanador",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "autoprefixer": "^10.0.2",
+    "browserify": "^17.0.0",
     "html-minifier": "^4.0.0",
     "postcss": "^8.1.7",
     "postcss-cli": "^8.3.0",
