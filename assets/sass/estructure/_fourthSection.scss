@@ -18,10 +18,11 @@
         justify-content: center;
 
         &__left {
+            box-sizing: border-box;
+            border: 0.2rem solid darken($main-color, 10%);
             width: 40%;
             margin: 5%;
             background: $background-light;
-            height: 15rem;
             border-radius: 1rem;
         }
 
