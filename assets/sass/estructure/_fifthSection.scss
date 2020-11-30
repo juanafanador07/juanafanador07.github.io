@@ -62,7 +62,11 @@
             padding: .75rem 2rem;
             border-radius: 2rem;
 
-            &:hover {
+            &[disabled] {
+                opacity: 0.5;
+            }
+
+            &:hover:not([disabled]) {
                 cursor: pointer;
                 background: darken($main-color, 5%);
                 transition:
@@ -70,7 +74,7 @@
                     background .25s ease;
             }
 
-            &:active {
+            &:active:not([disabled]) {
                 box-shadow: 0 0 0 0.2rem rgba($main-color, .5);
                 transition:
                     box-shadow .1s ease,
@@ -88,16 +92,17 @@
             padding: 1rem;
             color: $background-light;
             text-align: center;
+            background: $main-color;
+            transition: background .25s ease;
 
             &.hidden {
                 display: none;
             }
 
             &.error {
+                transition: background .25s ease;
                 background: $background-error;
             }
-
-            background: $main-color;
         }
     }
 

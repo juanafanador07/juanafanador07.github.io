@@ -1,15 +1,15 @@
 const form = document.querySelector(".fifth-section__form");
-const messageContainer = document.querySelector(".fifth-section__form__message");
 form.script.value = "true";
 
 async function submit(e) {
     e.preventDefault();
+    const submit = document.querySelector(".fifth-section__form__submit");
+    const messageElem = document.querySelector(".fifth-section__form__message");
 
-    let name = form.name.value;
-    let email = form.email.value;
-    let message = form.message.value;
-    let script = form.script.value;
-    let honey = form.honey.value;
+    messageElem.classList.remove("hidden");
+    messageElem.innerText = "Enviando...";
+
+    submit.disabled = true;
 
     let data = await fetch(form.action, {
         method: "post",
@@ -17,23 +17,24 @@ async function submit(e) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            name,
-            email,
-            message,
-            script,
-            honey
+            name: form.name.value,
+            email: form.email.value,
+            message: form.message.value,
+            script: form.script.value,
+            honey: form.honey.value
         })
     });
 
     let res = await data.json();
 
     if (res.error == true) {
-        messageContainer.classList.add("error");
+        messageElem.classList.add("error");
     } else {
-        messageContainer.classList.remove("error");
+        messageElem.classList.remove("error");
     }
-    messageContainer.classList.remove("hidden");
-    messageContainer.innerText = res.status
+
+    messageElem.innerText = res.status;
+    submit.disabled = false;
 }
 
 async function awakeServer() {
