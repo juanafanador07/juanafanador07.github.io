@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
         transporter.sendMail({
             from: process.env.GOOGLE_USER,
             to: email,
-            subject: 'Message Sent',
+            subject: 'Mensaje Enviado',
             text: ejsRenderFile("mail/messageSentText.ejs", body),
             html: ejsRenderFile("mail/messageSent.ejs", body)
         });
@@ -56,9 +56,7 @@ router.post("/", async (req, res) => {
             from: process.env.GOOGLE_USER,
             to: process.env.GOOGLE_USER,
             subject: 'Alguien te ha enviado un mensaje',
-            text: `Nombre: ${name}
-            Correo: ${email}
-            Mensaje: ${message}`,
+            text: ejsRenderFile("mail/notificationText.ejs", body),
             html: ejsRenderFile("mail/notification.ejs", body)
         });
 
