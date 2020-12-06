@@ -1,37 +1,12 @@
 const express = require("express");
-const ejs = require("ejs");
-const nodemailer = require('nodemailer');
 const Message = require(__dirname + "/models/message");
-const router = express.Router();
 const JoiMessageSchema = require("./MessagePattern");
-
-function ejsRenderFile(path, options) {
-    let data;
-    ejs.renderFile(path, options, {}, (err, str) => {
-        if (err) {
-            console.log(err)
-        } else {
-            data = str
-        }
-    });
-    return data;
-}
-
-/*Email Configuration*/
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
-    }
-});
+const mail = require("./mail");
+const router = express.Router();
 
 /*Router*/
 router.post("/", async (req, res) => {
     const body = req.body;
-    const name = body.name;
-    const email = body.email;
-    const message = body.message;
     const script = body.script;
 
     try {
@@ -42,23 +17,9 @@ router.post("/", async (req, res) => {
         body.date = new Date(Date.now());
         await Message.create(body);
 
-        /*Send Email*/
-        transporter.sendMail({
-            from: process.env.GOOGLE_USER,
-            to: email,
-            subject: 'Mensaje Enviado',
-            text: ejsRenderFile("mail/messageSentText.ejs", body),
-            html: ejsRenderFile("mail/messageSent.ejs", body)
-        });
-
-        /*Notify to me*/
-        transporter.sendMail({
-            from: process.env.GOOGLE_USER,
-            to: process.env.GOOGLE_USER,
-            subject: 'Alguien te ha enviado un mensaje',
-            text: ejsRenderFile("mail/notificationText.ejs", body),
-            html: ejsRenderFile("mail/notification.ejs", body)
-        });
+        /*Send Emails*/
+        mail.notifyUser(body);
+        mail.notifyMe(body);
 
         if (script == "true") {
             return res.send({
