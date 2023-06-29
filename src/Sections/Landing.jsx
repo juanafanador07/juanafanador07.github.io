@@ -1,6 +1,5 @@
 import { faAnglesDown } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Components/Button";
-import Header from "./Header";
 
 export default function Landing() {
   const code = [
@@ -52,7 +51,7 @@ export default function Landing() {
 
   return (
     <section
-      className="p-5"
+      className="pt-5 px-5"
       style={{
         minHeight: "100vh",
         background:
@@ -92,8 +91,6 @@ export default function Landing() {
           <Button icon={faAnglesDown} href="#aboutMe" />
         </div>
       </div>
-
-      <Header />
     </section>
   );
 }

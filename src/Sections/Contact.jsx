@@ -33,7 +33,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="container p-5 text-light-02" id="projects">
+    <section className="container p-5 text-light-02" id="contact">
       <h2 className="text-center my-4 fw-bold text-light-01">
         Ponte en contacto
       </h2>
