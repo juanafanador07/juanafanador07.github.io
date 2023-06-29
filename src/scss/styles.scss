@@ -1,0 +1,71 @@
+@use "sass:map";
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&family=Roboto:wght@400;700&family=Ubuntu:wght@400;700&display=swap");
+
+$custom-colors: (
+  "dark-00": #000e0a,
+  "dark-01": #001c17,
+  "dark-02": #062f27,
+  "dark-03": #0b4137,
+  "accent": #2cae94,
+  "light-01": #fffdff,
+  "light-02": #def3eb,
+);
+
+$font-family-monospace: "Fira Mono", monospace;
+$headings-font-family: "Ubuntu", sans-serif;
+$font-family-base: "Roboto", sans-serif;
+$focus-ring-color: map.get($custom-colors, "accent");
+$input-placeholder-color: map.get($custom-colors, "light-02");
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+$theme-colors: map-merge($theme-colors, $custom-colors);
+@import "~bootstrap/scss/bootstrap";
+
+.header-sticky {
+  width: 90%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  animation: showHeader 0.25s;
+  z-index: 99;
+
+  .btn {
+    background-color: rgba(map.get($custom-colors, "dark-01"), 0.5);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes showHeader {
+  from {
+    transform: translate(-50%, -100%);
+  }
+  to {
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 720px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .header-col-1 {
+    justify-content: center;
+  }
+
+  .header-col-2 {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 721px) {
+  .header-col-1 {
+    justify-content: start;
+  }
+
+  .header-col-2 {
+    justify-content: end;
+  }
+}
