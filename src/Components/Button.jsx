@@ -1,6 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Button({ text, icon, href, target, bg, handleAction }) {
+export default function Button({
+  text,
+  icon,
+  href,
+  target,
+  bg,
+  handleAction,
+  adittionalAttrs = {},
+}) {
   const content = (
     <>
       {icon ? <FontAwesomeIcon icon={icon} className="m-1" /> : ""}
@@ -13,11 +21,16 @@ export default function Button({ text, icon, href, target, bg, handleAction }) {
   } btn m-2 d-flex align-items-center justify-content-center text-light-02 rounded-4`;
 
   return href ? (
-    <a href={href} className={className} target={target ? target : "_self"}>
+    <a
+      href={href}
+      className={className}
+      target={target ? target : "_self"}
+      {...adittionalAttrs}
+    >
       {content}
     </a>
   ) : (
-    <button className={className} onClick={handleAction}>
+    <button className={className} onClick={handleAction} {...adittionalAttrs}>
       {content}
     </button>
   );

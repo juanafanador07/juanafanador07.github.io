@@ -3,8 +3,10 @@ import { faEnvelope, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../Components/Button";
 import Input from "../Components/Input";
+import ModalMsg from "../Components/ModalMsg";
 
 export default function Contact() {
+  const [alertMsg, setAlertMsg] = useState("");
   const [form, setForm] = useState({
     email: "",
     subject: "",
@@ -18,22 +20,39 @@ export default function Contact() {
     setForm(copy);
   }
 
-  function handleSubmit() {
-    if (form.email.length === 0) {
-      throw new Error("Email not valid");
-    }
-    if (form.subject.length === 0) {
-      throw new Error("Subject not valid");
-    }
-    if (form.message.length === 0) {
-      throw new Error("Message not valid");
-    }
+  async function handleSubmit() {
+    try {
+      setAlertMsg("");
+      const req = await fetch("https://sendemails-wl65bpvafq-uc.a.run.app", {
+        method: "POST",
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+        body: JSON.stringify({
+          ...form,
+        }),
+      });
 
-    alert("Mensaje enviado.");
+      const res = await req.json();
+
+      if (res.status === "sucess") {
+        setAlertMsg("Mensaje enviado.");
+      }
+
+      if (res.status === "error-invalid-email") {
+        setAlertMsg("El email no es válido.");
+      }
+
+      if (res.status === "error-missing-body") {
+        setAlertMsg("Hay campos sin rellenar.");
+      }
+    } catch (err) {
+      console.error(err);
+      setAlertMsg("Ha ocurrido un error. Inténtalo más tarde.");
+    }
   }
 
   return (
     <section className="container p-5 text-light-02" id="contact">
+      <ModalMsg message={alertMsg} />
       <h2 className="text-center my-4 fw-bold text-light-01">
         Ponte en contacto
       </h2>
