@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import imagePresets, { widthPreset } from "vite-plugin-image-presets";
+import webfontDownload from "vite-plugin-webfont-dl";
 import * as path from "path";
 
 export default defineConfig({
@@ -24,6 +25,9 @@ export default defineConfig({
         },
       }),
     }),
+    webfontDownload([
+      "https://fonts.googleapis.com/css2?family=Fira+Mono&family=Roboto:wght@400;700&family=Ubuntu:wght@400;700&display=swap",
+    ]),
   ],
   resolve: {
     alias: {
