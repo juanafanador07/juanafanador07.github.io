@@ -1,10 +1,30 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import imagePresets, { widthPreset } from "vite-plugin-image-presets";
 import * as path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    imagePresets({
+      project: widthPreset({
+        widths: [200, 400, 600, 800, 1000, 1200],
+        sizes: "(min-width: 768px) 25vw, (max-width: 767px) 50vw",
+        formats: {
+          webp: { quality: 80 },
+          jpg: { quality: 80 },
+        },
+      }),
+      profile: widthPreset({
+        widths: [128, 192, 256],
+        sizes: "(min-width: 768px) 25vw, (max-width: 767px) 50vw",
+        formats: {
+          webp: { quality: 80 },
+          jpg: { quality: 80 },
+        },
+      }),
+    }),
+  ],
   resolve: {
     alias: {
       "~bootstrap": path.resolve(__dirname, "node_modules/bootstrap"),

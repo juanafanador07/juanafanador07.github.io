@@ -1,5 +1,7 @@
 import Card from "../Components/Card";
 
+import climmap from "../img/climapp.png?preset=project";
+
 export default function Projects() {
   return (
     <section className="container p-5 text-light-02" id="projects">
@@ -12,28 +14,10 @@ export default function Projects() {
 
       <div className="row">
         <Card
-          name="Proyecto 1"
-          img="https://cdn.wallpapersafari.com/93/57/15OE63.jpg"
-          github="https://github.com"
-          url="https://test.com"
-        />
-        <Card
-          name="Nombre del Proyecto"
-          img="https://cdn.wallpapersafari.com/93/57/15OE63.jpg"
-          github="https://github.com"
-          url="https://test.com"
-        />
-        <Card
-          name="Nombre del Proyecto"
-          img="https://cdn.wallpapersafari.com/93/57/15OE63.jpg"
-          github="https://github.com"
-          url="https://test.com"
-        />
-        <Card
-          name="Nombre del Proyecto"
-          img="https://cdn.wallpapersafari.com/93/57/15OE63.jpg"
-          github="https://github.com"
-          url="https://test.com"
+          name="Climapp"
+          src={climmap}
+          github="https://github.com/juanafanador07/climapp/"
+          url="https://climmap.onrender.com/"
         />
       </div>
     </section>
