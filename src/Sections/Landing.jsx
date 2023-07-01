@@ -88,7 +88,13 @@ export default function Landing() {
         </div>
 
         <div className="position-absolute bottom-0 start-50 translate-middle">
-          <Button icon={faAnglesDown} href="#aboutMe" />
+          <Button
+            icon={faAnglesDown}
+            href="#aboutMe"
+            adittionalAttrs={{
+              "aria-label": "Más sobre mí",
+            }}
+          />
         </div>
       </div>
     </section>

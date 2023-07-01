@@ -1,5 +1,8 @@
 @use "sass:map";
 
+// Bootstra Configuration
+@import "~bootstrap/scss/functions";
+
 $custom-colors: (
   "dark-00": #000e0a,
   "dark-01": #001c17,
@@ -16,10 +19,31 @@ $font-family-base: "Roboto", sans-serif;
 $focus-ring-color: map.get($custom-colors, "accent");
 $input-placeholder-color: map.get($custom-colors, "light-02");
 
-@import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
+
 $theme-colors: map-merge($theme-colors, $custom-colors);
-@import "~bootstrap/scss/bootstrap";
+
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+// Layout & components
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/helpers";
+@import "~bootstrap/scss/utilities/api";
+
+// Custom CSS
 
 .btn-glass {
   background-color: rgba(map.get($custom-colors, "dark-02"), 0.5);

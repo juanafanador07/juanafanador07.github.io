@@ -7,7 +7,12 @@ export default function AboutMe() {
       <div className="row p-5">
         <div className="col d-flex align-items-center justify-content-center">
           <div style={{ width: "256px" }}>
-            <Image className="w-100 rounded-4" src={perfil} />
+            <Image
+              className="w-100 h-100 rounded-4"
+              src={perfil}
+              width="256px"
+              height="256px"
+            />
           </div>
         </div>
         <div className="col d-flex align-items-center justify-content-center">
