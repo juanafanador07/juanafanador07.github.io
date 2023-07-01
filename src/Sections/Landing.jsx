@@ -66,7 +66,7 @@ export default function Landing() {
       >
         <div className="row container-fluid">
           <div className="col desktop-only">
-            <pre>
+            <pre className="animation animation-delayed animation-fade-in overflow-hidden">
               {code.map((element, i) => {
                 return (
                   <code
@@ -80,7 +80,7 @@ export default function Landing() {
               })}
             </pre>
           </div>
-          <div className="col d-flex flex-column align-items-center justify-content-center text-light-02 text-center p-5">
+          <div className="col d-flex flex-column align-items-center justify-content-center text-light-02 text-center p-5 animation animation-delayed animation-fade-in">
             <p>Hola, yo soy</p>
             <h1 className="fw-bold text-light-01">Juan Afanador</h1>
             <p>Frontend Developer</p>

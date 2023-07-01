@@ -16,7 +16,7 @@ export default function Skills() {
       </h2>
       <p className="text-center">Me especializo en HTML, CSS y Javascript.</p>
 
-      <div className="row">
+      <div className="row animation animation-delayed animation-fade-in">
         <Progress icon={faHtml5} name="HTML" percent={80} color="#E86229" />
         <Progress icon={faCss3Alt} name="CSS" percent={80} color="#0091D5" />
         <Progress

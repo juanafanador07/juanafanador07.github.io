@@ -58,8 +58,8 @@ export default function Contact() {
       </h2>
       <p className="text-center">Responderé tan pronto como sea posible.</p>
 
-      <div className="row p-4 bg-dark-02 rounded-4">
-        <div className="col">
+      <div className="row p-4 bg-dark-02 rounded-4 overflow-hidden">
+        <div className="col animation animation-delayed animation-fade-right">
           <h3 className="fw-bold text-center fs-2 my-4">¿Quieres Hablar?</h3>
           <Input
             placeholder="Email"
@@ -86,7 +86,7 @@ export default function Contact() {
             />
           </div>
         </div>
-        <div className="col">
+        <div className="col animation animation-fade-left">
           <div className="d-flex align-items-center">
             <FontAwesomeIcon icon={faEnvelope} className="m-2" />
             <span className="m-2">Correo</span>

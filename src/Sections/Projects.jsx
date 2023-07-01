@@ -12,7 +12,7 @@ export default function Projects() {
         he creado.
       </p>
 
-      <div className="row">
+      <div className="row animation animation-delayed animation-fade-in">
         <Card
           name="Climapp"
           src={climmap}

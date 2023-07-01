@@ -44,6 +44,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "~bootstrap/scss/utilities/api";
 
 // Custom CSS
+@import "animations.scss";
 
 .btn-glass {
   background-color: rgba(map.get($custom-colors, "dark-02"), 0.5);

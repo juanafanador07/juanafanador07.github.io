@@ -4,11 +4,11 @@ import perfil from "../img/profile.png?preset=profile";
 export default function AboutMe() {
   return (
     <section className="container text-light-02" id="aboutMe">
-      <div className="row p-5">
+      <div className="row p-5 overflow-hidden">
         <div className="col d-flex align-items-center justify-content-center">
           <div style={{ width: "256px" }}>
             <Image
-              className="w-100 h-100 rounded-4"
+              className="w-100 h-100 rounded-4 animation animation-fade-right"
               src={perfil}
               width="256px"
               height="256px"
@@ -16,7 +16,7 @@ export default function AboutMe() {
           </div>
         </div>
         <div className="col d-flex align-items-center justify-content-center">
-          <div>
+          <div className="animation animation-delayed animation-fade-left">
             <h2 className="text-light-01 my-4 fw-bold">
               Juan David Afanador Verjel
             </h2>
