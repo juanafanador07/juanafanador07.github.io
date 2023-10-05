@@ -6,7 +6,11 @@ import Input from "../Components/Input";
 import ModalMsg from "../Components/ModalMsg";
 
 export default function Contact() {
-  const [alertMsg, setAlertMsg] = useState("");
+  const [alert, setAlert] = useState({
+    type: null,
+    message: null,
+  });
+
   const [form, setForm] = useState({
     email: "",
     subject: "",
@@ -22,7 +26,10 @@ export default function Contact() {
 
   async function handleSubmit() {
     try {
-      setAlertMsg("");
+      setAlert({
+        type: null,
+        message: null,
+      });
       const req = await fetch("https://sendemails-wl65bpvafq-uc.a.run.app", {
         method: "POST",
         headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -34,25 +41,37 @@ export default function Contact() {
       const res = await req.json();
 
       if (res.status === "sucess") {
-        setAlertMsg("Mensaje enviado.");
+        setAlert({
+          type: "info",
+          message: "Mensaje enviado.",
+        });
       }
 
       if (res.status === "error-invalid-email") {
-        setAlertMsg("El email no es válido.");
+        setAlert({
+          type: "error",
+          message: "El email no es válido.",
+        });
       }
 
       if (res.status === "error-missing-body") {
-        setAlertMsg("Hay campos sin rellenar.");
+        setAlert({
+          type: "error",
+          message: "Hay campos sin rellenar.",
+        });
       }
     } catch (err) {
+      setAlert({
+        type: "error",
+        message: "Ha ocurrido un error. Inténtalo más tarde.",
+      });
       console.error(err);
-      setAlertMsg("Ha ocurrido un error. Inténtalo más tarde.");
     }
   }
 
   return (
     <section className="container p-5 text-light-02" id="contact">
-      <ModalMsg message={alertMsg} />
+      <ModalMsg message={alert.message} type={alert.type} />
       <h2 className="text-center my-4 fw-bold text-light-01">
         Ponte en contacto
       </h2>
