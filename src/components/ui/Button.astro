@@ -1,0 +1,29 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  class?: string;
+  href: string;
+  icon?: string;
+  target?: string;
+}
+
+const { class: className, icon, href, target = "_blank" } = Astro.props;
+---
+
+<a
+  href={href}
+  target={target}
+  class:list={[
+    className,
+    "inline-flex items-center justify-center p-[2px] rounded-xl text-white font-bold bg-gradient-to-r from-emerald-600 to-teal-600",
+  ]}
+>
+  <div
+    class="inline-flex items-center gap-2 py-1 px-2 rounded-[10px] bg-gradient-to-r from-emerald-500 to-teal-500"
+  >
+    {icon && <Icon name={icon} size={20} />}
+
+    <slot />
+  </div>
+</a>

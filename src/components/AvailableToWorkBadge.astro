@@ -1,0 +1,28 @@
+---
+import { AVAILABLE_TO_WORK } from "astro:env/client";
+---
+
+<div
+  class:list={[
+    "flex items-center py-1 px-2 gap-2 rounded-xl border-2 text-sm",
+    {
+      "border-emerald-600 bg-emerald-100 text-emerald-600": AVAILABLE_TO_WORK,
+    },
+    {
+      "border-gray-400 bg-gray-100 text-gray-600": !AVAILABLE_TO_WORK,
+    },
+  ]}
+>
+  <div
+    class:list={[
+      "size-2 rounded-full bg-current",
+      { "shadow-[0px_0px_2px_1px]": AVAILABLE_TO_WORK },
+    ]}
+  >
+  </div>
+  {
+    AVAILABLE_TO_WORK
+      ? "Disponible para trabajar"
+      : "No disponible para trabajar"
+  }
+</div>

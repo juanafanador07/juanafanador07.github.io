@@ -1,0 +1,33 @@
+---
+interface Props {
+  level: number;
+  class?: string;
+}
+
+const { level = 1, class: className } = Astro.props;
+const HeadingTag = `h${level}`;
+---
+
+<HeadingTag
+  class:list={[
+    className,
+    "font-bold",
+    {
+      "text-4xl": level === 1,
+    },
+    {
+      "text-3xl": level === 2,
+    },
+    {
+      "text-2xl": level === 3,
+    },
+    {
+      "text-xl": level === 4,
+    },
+    {
+      "text-lg": level === 5,
+    },
+  ]}
+>
+  <slot />
+</HeadingTag>
