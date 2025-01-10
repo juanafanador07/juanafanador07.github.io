@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon/components";
+import Heading from "./ui/Heading.astro";
+
+interface Props {
+  icon: string;
+}
+
+const { icon } = Astro.props;
+---
+
+<div class="flex items-center gap-5 my-10">
+  <Icon name={icon} size="48" />
+  <Heading level={2}>
+    <slot />
+  </Heading>
+</div>

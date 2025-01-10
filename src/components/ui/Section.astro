@@ -1,11 +1,15 @@
 ---
 interface Props {
   class?: string;
+  id?: string;
 }
 
 const { class: className } = Astro.props;
 ---
 
-<section class:list={[className, "max-w-screen-lg mx-auto"]} {...Astro.props}>
+<section
+  class:list={[className, "max-w-screen-lg mx-auto p-10"]}
+  {...Astro.props}
+>
   <slot />
 </section>

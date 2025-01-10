@@ -1,0 +1,68 @@
+---
+import Section from "@components/ui/Section.astro";
+import TimelineItem from "@components/TimelineItem.astro";
+import TitleIcon from "@components/TitleIcon.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Section id="experience">
+  <TitleIcon icon="mdi:briefcase-variant-outline">
+    Experiencia Laboral
+  </TitleIcon>
+
+  <TimelineItem
+    title="Administrador de CMS"
+    subtitle="ACOFACIEN"
+    subtitleUrl="https://acofacien.org/"
+    date="Junio 2024 - Actualmente"
+  >
+    Responsable de la gestión de contenidos y mantenimiento de la página web de
+    la Asociación Colombiana de Facultades de Ciencias (ACOFACIEN).
+  </TimelineItem>
+
+  <div class="grid lg:grid-cols-2">
+    <div>
+      <TitleIcon icon="mdi:education-outline"> Educación </TitleIcon>
+
+      <TimelineItem
+        title="Ingeniería de Sistemas"
+        subtitle="UFPS"
+        subtitleUrl="https://ww2.ufps.edu.co/"
+        date="En curso"
+      />
+
+      <TimelineItem
+        title="Bachiller Técnico en Sistemas"
+        subtitle="Colegio Pablo Neruda"
+        subtitleUrl="https://pabloneruda.edu.co/"
+        date="2021"
+      />
+    </div>
+    <div>
+      <TitleIcon icon="mdi:medal-outline"> Cursos </TitleIcon>
+
+      <TimelineItem
+        title="Networking Basics"
+        subtitle="CISCO"
+        subtitleUrl="https://www.credly.com/badges/1658a965-0554-4c8b-89f1-d92e15276b86/public_url"
+        date="2024"
+      />
+
+      <TimelineItem
+        title="AWS Academy Cloud Foundations"
+        subtitle="Amazon Web Services"
+        subtitleUrl="https://www.credly.com/badges/6a8288e5-d085-40c2-a15a-60968314389a/public_url"
+        date="2024"
+      />
+
+      <a
+        href="https://www.credly.com/users/juanafanador07"
+        target="_blank"
+        class="flex items-center gap-2 my-4"
+      >
+        <Icon name="material-symbols:add-rounded" />
+        Ver más
+      </a>
+    </div>
+  </div>
+</Section>

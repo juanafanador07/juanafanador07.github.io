@@ -1,0 +1,54 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  subtitleUrl: string;
+  date: string;
+}
+
+const { title, subtitle, subtitleUrl, date } = Astro.props;
+const slotExist = Astro.slots.has("default");
+---
+
+<div
+  class:list={[
+    "grid",
+    {
+      "grid-rows-[auto_1fr] grid-cols-[auto_1fr] lg:grid-rows-1 lg:grid-cols-[auto_1fr_1fr]":
+        slotExist,
+    },
+    {
+      "grid-cols-[auto_1fr]": !slotExist,
+    },
+  ]}
+>
+  <div class="relative row-span-2 w-4 flex flex-col items-center">
+    <div
+      class="absolute top-6 size-4 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+    >
+    </div>
+    <div class="w-[2px] min-h-full rounded-full bg-slate-600"></div>
+  </div>
+
+  <div class="my-4 mx-8">
+    <h3 class="font-bold text-xl text-emerald-500">{title}</h3>
+    <a
+      class="inline-flex items-center my-1 gap-1 font-bold text-xl"
+      href={subtitleUrl}
+      target="_blank"
+    >
+      {subtitle}
+      <Icon name="material-symbols:arrow-outward-rounded" />
+    </a>
+    <p class="text-sm">{date}</p>
+  </div>
+  {
+    slotExist && (
+      <p class="mx-8 lg:mx-0 my-4 col-start-2 lg:col-start-3">
+        <slot />
+      </p>
+    )
+  }
+</div>
