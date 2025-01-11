@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components";
+import CardTilt from "./CardTilt.astro";
+import CardSpotlight from "./CardSpotlight.astro";
+
+interface Props {
+  name: string;
+  icon: string;
+  color: string;
+}
+
+const { name, icon, color } = Astro.props;
+---
+
+<CardTilt>
+  <CardSpotlight
+    color={color}
+    class="size-40 flex items-center justify-center flex-col gap-5 bg-slate-100 rounded-xl transition shadow-xl"
+  >
+    <Icon name={icon} size={48} />
+    {name}
+  </CardSpotlight>
+</CardTilt>

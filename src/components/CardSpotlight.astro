@@ -1,6 +1,18 @@
-<div class="relative" data-spotlight>
+---
+interface Props {
+  color?: string;
+  class?: string;
+}
+
+const { color = "from-white", class: classList } = Astro.props;
+---
+
+<div class:list={[classList, "relative"]} data-spotlight>
   <div
-    class="pointer-events-none absolute -inset-px transition opacity-0 from-emerald-50"
+    class:list={[
+      "pointer-events-none absolute -inset-px transition opacity-0",
+      color,
+    ]}
     data-spotlight-layer
   >
   </div>

@@ -1,4 +1,12 @@
-<div class="transition-all" data-tilt>
+---
+interface Props {
+  class?: string;
+}
+
+const { class: classList } = Astro.props;
+---
+
+<div class:list={[classList, "transition-all w-fit h-fit"]} data-tilt>
   <slot />
 </div>
 
@@ -16,8 +24,9 @@
     const y = e.clientY - box.top;
     const centerX = box.width / 2;
     const centerY = box.height / 2;
-    const rotateX = (y - centerY) / 16;
-    const rotateY = (centerX - x) / 16;
+    const size = Math.max(box.width, box.height);
+    const rotateX = (y - centerY) / (size / 50);
+    const rotateY = (centerX - x) / (size / 50);
 
     setRotation(index, {
       x: rotateX,

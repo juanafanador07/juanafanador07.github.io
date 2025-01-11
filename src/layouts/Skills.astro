@@ -1,0 +1,50 @@
+---
+import Section from "@components/ui/Section.astro";
+import TitleIcon from "@components/TitleIcon.astro";
+import SkillCard from "@components/SkillCard.astro";
+import CardTilt from "@components/CardTilt.astro";
+---
+
+<Section id="skills" class="my-20">
+  <TitleIcon icon="material-symbols:service-toolbox-outline-rounded">
+    Habilidades
+  </TitleIcon>
+
+  <div class="flex gap-8 flex-wrap justify-center">
+    <SkillCard name="HTML" icon="devicon:html5" color="from-orange-300" />
+    <SkillCard name="CSS" icon="devicon:css3" color="from-blue-300" />
+    <SkillCard
+      name="JavaScript"
+      icon="devicon:javascript"
+      color="from-yellow-300"
+    />
+    <SkillCard
+      name="TypeScript"
+      icon="devicon:typescript"
+      color="from-blue-300"
+    />
+    <SkillCard name="Java" icon="devicon:java" color="from-red-300" />
+    <SkillCard name="React" icon="devicon:react" color="from-cyan-300" />
+    <SkillCard name="Express" icon="devicon:express" color="from-slate-400" />
+    <SkillCard name="Spring" icon="devicon:spring" color="from-lime-300" />
+    <SkillCard
+      name="Wordpress"
+      icon="simple-icons:wordpress"
+      color="from-slate-400"
+    />
+    <SkillCard
+      name="Linux"
+      icon="flat-color-icons:linux"
+      color="from-yellow-300"
+    />
+    <SkillCard name="Docker" icon="logos:docker-icon" color="from-blue-300" />
+    <SkillCard name="MongoDB" icon="devicon:mongodb" color="from-green-300" />
+    <SkillCard name="MySQL" icon="devicon:mysql" color="from-sky-300" />
+    <SkillCard
+      name="Google Cloud"
+      icon="devicon:googlecloud"
+      color="from-slate-400"
+    />
+    <SkillCard name="AWS" icon="logos:aws" color="from-orange-300" />
+  </div>
+</Section>
