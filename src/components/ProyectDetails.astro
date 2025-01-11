@@ -1,0 +1,99 @@
+---
+import type { ImageMetadata } from "astro";
+import Heading from "@components/ui/Heading.astro";
+import Badge from "@components/ui/Badge.astro";
+import Button from "@components/ui/Button.astro";
+import ProyectImageDisplay from "@components/ProyectImageDisplay.astro";
+import CardSpotlight from "./CardSpotlight.astro";
+
+interface Props {
+  title: string;
+  langs: string[];
+  repositoryUrl: string;
+  livePreviewUrl: string;
+  image: ImageMetadata;
+  imageAlt: string;
+}
+
+interface LangData {
+  text: string;
+  icon: string;
+  border: string;
+  background: string;
+}
+
+const { title, langs, repositoryUrl, livePreviewUrl, image, imageAlt } =
+  Astro.props;
+
+const langsArr = new Map<string, LangData>([
+  [
+    "HTML",
+    {
+      text: "HTML",
+      icon: "devicon:html5",
+      border: "border-orange-300",
+      background: "bg-orange-50",
+    },
+  ],
+  [
+    "CSS",
+    {
+      text: "CSS",
+      icon: "devicon:css3",
+      border: "border-blue-300",
+      background: "bg-blue-50",
+    },
+  ],
+  [
+    "JAVASCRIPT",
+    {
+      text: "JavaScript",
+      icon: "devicon:javascript",
+      border: "border-yellow-300",
+      background: "bg-yellow-50",
+    },
+  ],
+]);
+---
+
+<CardSpotlight>
+  <div class="grid grid-cols-2 gap-10 items-start">
+    <ProyectImageDisplay image={image} imageAlt={imageAlt} />
+    <div>
+      <Heading level={3}>{title}</Heading>
+      <div class="flex gap-2 flex-wrap my-5">
+        {
+          langs.map((lang) => {
+            const langData = langsArr.get(lang);
+
+            if (!langData) return;
+
+            return (
+              <Badge
+                icon={langData.icon}
+                border={langData.border}
+                background={langData.background}
+              >
+                {langData.text}
+              </Badge>
+            );
+          })
+        }
+      </div>
+
+      <p class="my-5">
+        <slot />
+      </p>
+
+      <div class="flex gap-2">
+        <Button
+          href={repositoryUrl}
+          icon="material-symbols:folder-code-outline-rounded"
+        >
+          Código
+        </Button>
+        <Button href={livePreviewUrl} icon="mdi:eye-outline"> Ver </Button>
+      </div>
+    </div>
+  </div>
+</CardSpotlight>

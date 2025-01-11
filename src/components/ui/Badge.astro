@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  icon: string;
+  border: string;
+  background: string;
+}
+
+const { icon, border, background } = Astro.props;
+---
+
+<div
+  class:list={[
+    "inline-flex items-center gap-2 py-1 px-3 text-xs rounded-xl border-2",
+    border,
+    background,
+  ]}
+>
+  <Icon size="14" name={icon} />
+  <slot />
+</div>

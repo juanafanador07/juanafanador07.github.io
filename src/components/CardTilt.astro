@@ -1,0 +1,46 @@
+<div class="transition-all" data-tilt>
+  <slot />
+</div>
+
+<script>
+  import throttle from "@utils/throttle";
+
+  const elems = document.querySelectorAll(
+    "[data-tilt]"
+  ) as NodeListOf<HTMLElement>;
+
+  function mouseMove(e: MouseEvent, index: number) {
+    const card = elems[index];
+    const box = card.getBoundingClientRect();
+    const x = e.clientX - box.left;
+    const y = e.clientY - box.top;
+    const centerX = box.width / 2;
+    const centerY = box.height / 2;
+    const rotateX = (y - centerY) / 16;
+    const rotateY = (centerX - x) / 16;
+
+    setRotation(index, {
+      x: rotateX,
+      y: rotateY,
+    });
+  }
+
+  function mouseLeave(e: MouseEvent, index: number) {
+    setRotation(index, {
+      x: 0,
+      y: 0,
+    });
+  }
+
+  function setRotation(index: number, rotation: { x: number; y: number }) {
+    const card = elems[index];
+    card.style.transform = `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale3d(1, 1, 1)`;
+  }
+
+  const throttledMouseMove = throttle(mouseMove, 100);
+
+  elems.forEach((elem, index) => {
+    elem.addEventListener("mousemove", (e) => throttledMouseMove(e, index));
+    elem.addEventListener("mouseleave", (e) => mouseLeave(e, index));
+  });
+</script>

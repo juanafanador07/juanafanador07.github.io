@@ -1,0 +1,51 @@
+<div class="relative" data-spotlight>
+  <div
+    class="pointer-events-none absolute -inset-px transition opacity-0 from-emerald-50"
+    data-spotlight-layer
+  >
+  </div>
+  <slot />
+</div>
+
+<script>
+  import throttle from "@utils/throttle";
+
+  const elems = document.querySelectorAll(
+    "[data-spotlight]"
+  ) as NodeListOf<HTMLElement>;
+
+  const lightLayers = document.querySelectorAll(
+    "[data-spotlight] [data-spotlight-layer]"
+  ) as NodeListOf<HTMLElement>;
+
+  function mouseMove(e: MouseEvent, index: number) {
+    const card = elems[index];
+    const box = card.getBoundingClientRect();
+    const x = e.clientX - box.left;
+    const y = e.clientY - box.top;
+
+    setSpotlightPosition(index, {
+      x,
+      y,
+    });
+  }
+
+  function toggleSpotlight(index: number) {
+    const lightLayer = lightLayers[index];
+    lightLayer.classList.toggle("opacity-0");
+    lightLayer.classList.toggle("opacity-20");
+  }
+
+  function setSpotlightPosition(index: number, pos: { x: number; y: number }) {
+    const lightLayer = lightLayers[index];
+    lightLayer.style.background = `radial-gradient(128px circle at ${pos.x}px ${pos.y}px, var(--tw-gradient-stops))`;
+  }
+
+  const throttledMouseMove = throttle(mouseMove, 10);
+
+  elems.forEach((elem, index) => {
+    elem.addEventListener("mousemove", (e) => throttledMouseMove(e, index));
+    elem.addEventListener("mouseenter", () => toggleSpotlight(index));
+    elem.addEventListener("mouseleave", () => toggleSpotlight(index));
+  });
+</script>
