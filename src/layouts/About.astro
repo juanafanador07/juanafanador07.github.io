@@ -4,8 +4,8 @@ import Section from "@components/ui/Section.astro";
 import TitleIcon from "@components/TitleIcon.astro";
 import HighlightText from "@components/ui/HighlightText.astro";
 import aboutImg from "@assets/images/about.jpeg";
-import CardTilt from "@components/CardTilt.astro";
-import CardSpotlight from "@components/CardSpotlight.astro";
+import Tilt from "@components/Tilt.astro";
+import Spotlight from "@components/Spotlight.astro";
 ---
 
 <Section
@@ -41,8 +41,8 @@ import CardSpotlight from "@components/CardSpotlight.astro";
     </p>
   </div>
 
-  <CardTilt class="w-5/6 order-2 row-span-2 self-center justify-self-center">
-    <CardSpotlight
+  <Tilt class="w-5/6 order-2 row-span-2 self-center justify-self-center">
+    <Spotlight
       class="relative pt-[107.89%] h-0 bg-white shadow-xl rounded-sm rotate-2 overflow-hidden"
     >
       <Picture
@@ -50,6 +50,6 @@ import CardSpotlight from "@components/CardSpotlight.astro";
         alt="Foto de Juan Afanador"
         class="absolute -inset-0 w-11/12 mx-auto mt-[3.66%] rounded -z-10"
       />
-    </CardSpotlight>
-  </CardTilt>
+    </Spotlight>
+  </Tilt>
 </Section>

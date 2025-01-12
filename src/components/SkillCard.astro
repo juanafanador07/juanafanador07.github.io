@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
-import CardTilt from "./CardTilt.astro";
-import CardSpotlight from "./CardSpotlight.astro";
+import Tilt from "./Tilt.astro";
+import Spotlight from "./Spotlight.astro";
 
 interface Props {
   name: string;
@@ -12,12 +12,12 @@ interface Props {
 const { name, icon, color } = Astro.props;
 ---
 
-<CardTilt>
-  <CardSpotlight
+<Tilt>
+  <Spotlight
     color={color}
     class="size-32 sm:size-40 flex items-center justify-center flex-col gap-5 bg-slate-100 rounded-xl transition shadow-xl"
   >
     <Icon name={icon} size={48} class="size-10 sm:size-12" />
     {name}
-  </CardSpotlight>
-</CardTilt>
+  </Spotlight>
+</Tilt>

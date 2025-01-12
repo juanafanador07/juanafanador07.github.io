@@ -9,10 +9,7 @@ const { color = "from-white", class: classList } = Astro.props;
 
 <div class:list={[classList, "relative"]} data-spotlight>
   <div
-    class:list={[
-      "pointer-events-none absolute -inset-px transition opacity-0",
-      color,
-    ]}
+    class:list={["absolute -inset-px transition opacity-0", color]}
     data-spotlight-layer
   >
   </div>
