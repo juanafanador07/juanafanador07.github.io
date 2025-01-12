@@ -1,0 +1,52 @@
+---
+import { Picture } from "astro:assets";
+import Section from "@components/ui/Section.astro";
+import TitleIcon from "@components/TitleIcon.astro";
+import HighlightText from "@components/ui/HighlightText.astro";
+import aboutImg from "@assets/images/about.jpeg";
+import CardTilt from "@components/CardTilt.astro";
+import CardSpotlight from "@components/CardSpotlight.astro";
+---
+
+<Section id="about" class="my-20 grid grid-cols-2 grid-rows-[auto_1fr] gap-x-8">
+  <TitleIcon icon="material-symbols:person-outline-rounded" class="order-1">
+    Sobre mí
+  </TitleIcon>
+  <div class="order-3">
+    <p class="mb-6">
+      Mi nombre es Juan David Afanador, mi interés por las computadoras comenzó
+      a los 11 años, cuando instalé Minecraft por mi cuenta.
+      <HighlightText>
+        Hoy en día, estoy cursando Ingeniería de Sistemas en la Universidad
+        Francisco de Paula Santander.
+      </HighlightText>
+    </p>
+    <p class="mb-6">
+      En la universidad,
+      <HighlightText>
+        soy líder del Semillero de Investigación de Aplicaciones Web (SIAWEB)
+      </HighlightText>, donde promovemos el aprendizaje a través de
+      capacitaciones en tecnologías y herramientas relacionadas con el
+      desarrollo web.
+    </p>
+    <p class="mb-6">
+      Además del desarrollo web, también
+      <HighlightText>
+        me interesan áreas como DevOps, redes de computadoras y la
+        administración de servidores linux.
+      </HighlightText>
+    </p>
+  </div>
+
+  <CardTilt class="w-5/6 order-2 row-span-2 self-center justify-self-center">
+    <CardSpotlight
+      class="relative pt-[107.89%] h-0 bg-white shadow-xl rounded-sm rotate-2 overflow-hidden"
+    >
+      <Picture
+        src={aboutImg}
+        alt="Foto de Juan Afanador"
+        class="absolute -inset-0 w-11/12 mx-auto mt-[3.66%] rounded -z-10"
+      />
+    </CardSpotlight>
+  </CardTilt>
+</Section>

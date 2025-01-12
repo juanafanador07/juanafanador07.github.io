@@ -6,7 +6,7 @@ interface Props {
 const { class: classList } = Astro.props;
 ---
 
-<div class:list={[classList, "transition-all w-fit h-fit"]} data-tilt>
+<div class:list={[classList, "transition-all"]} data-tilt>
   <slot />
 </div>
 
