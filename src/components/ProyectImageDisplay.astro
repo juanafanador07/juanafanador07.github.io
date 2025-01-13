@@ -26,10 +26,11 @@ const { image, imageAlt } = Astro.props;
         <div class="size-2 rounded-full bg-green-500"></div>
       </div>
       <Picture
-        densities={[1.5, 2, 3, 4, 5]}
         src={image}
         alt={imageAlt}
         formats={["avif", "webp"]}
+        widths={[320, 768, 1024, 1280, 1536]}
+        sizes="(max-width: 765px) 85vw, 40vw"
       />
     </Spotlight>
   </div>

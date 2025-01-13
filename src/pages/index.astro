@@ -7,7 +7,13 @@ import Footer from "@layouts/Footer.astro";
 import Hero from "@layouts/Hero.astro";
 import Proyects from "@layouts/Proyects.astro";
 import Skills from "@layouts/Skills.astro";
-import presentationImg from "@assets/images/climapp.png";
+import presentationImg from "@assets/images/presentation.jpg";
+import { getImage } from "astro:assets";
+
+const optimizedPresentationImg = await getImage({
+  src: presentationImg,
+  format: "jpeg",
+});
 ---
 
 <!doctype html>
@@ -22,13 +28,13 @@ import presentationImg from "@assets/images/climapp.png";
         basic: {
           title: "Juan Afanador | Desarrollador Web",
           type: "website",
-          image: new URL(presentationImg.src, Astro.site).toString(),
+          image: new URL(optimizedPresentationImg.src, Astro.site).toString(),
           url: Astro.site,
         },
         image: {
-          alt: "Carta de Presentación",
-          height: presentationImg.height,
-          width: presentationImg.width,
+          alt: "Tarjeta de Presentación de Juan Afanador",
+          height: optimizedPresentationImg.attributes.height,
+          width: optimizedPresentationImg.attributes.width,
         },
       }}
     />

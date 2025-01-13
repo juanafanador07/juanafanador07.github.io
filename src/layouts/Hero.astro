@@ -11,11 +11,11 @@ import profileImg from "@assets/images/profile.jpeg";
 <Section class="my-32">
   <div class="flex items-center gap-4">
     <Picture
-      width="64"
-      densities={[1.5, 2, 3, 4, 5]}
       src={profileImg}
       alt="Foto de perfil de Juan Afanador."
       formats={["avif", "webp"]}
+      widths={[64, 128, 256, 325]}
+      sizes="4rem"
       class="rounded-full size-16"
     />
     <AvailableToWorkBadge />

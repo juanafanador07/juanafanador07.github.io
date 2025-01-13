@@ -49,7 +49,8 @@ import Spotlight from "@components/Spotlight.astro";
         src={aboutImg}
         alt="Retrato de Juan Afanador, usando la camisa de SIAWEB."
         class="absolute -inset-0 w-11/12 mx-auto mt-[3.66%] rounded -z-10"
-        densities={[1.5, 2, 3, 4, 5]}
+        widths={[256, 384, 512, 768, 1024]}
+        sizes="(max-width: 639px) 66vw, 32vw"
         formats={["avif", "webp"]}
       />
     </Spotlight>
