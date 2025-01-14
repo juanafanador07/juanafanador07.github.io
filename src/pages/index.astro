@@ -29,7 +29,9 @@ const optimizedPresentationImg = await getImage({
         basic: {
           title: "Juan Afanador | Desarrollador Web",
           type: "website",
-          image: new URL(optimizedPresentationImg.src, Astro.site).toString(),
+          image: Astro.site
+            ? new URL(optimizedPresentationImg.src, Astro.site).toString()
+            : optimizedPresentationImg.src,
           url: Astro.site,
         },
         image: {
