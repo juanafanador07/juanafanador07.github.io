@@ -4,9 +4,10 @@ import { AVAILABLE_TO_WORK } from "astro:env/client";
 
 <div
   class:list={[
-    "flex items-center py-1 px-2 gap-2 rounded-xl border-2 text-sm animate-background-shine via-transparent bg-[linear-gradient(110deg,rgb(209_250_229),45%,rgb(236_253_245),55%,rgb(209_250_229))] bg-[length:200%_100%]",
+    "flex items-center py-1 px-2 gap-2 rounded-xl border-2 text-sm",
     {
-      "border-emerald-600 bg-emerald-100 text-emerald-700": AVAILABLE_TO_WORK,
+      "border-emerald-600 bg-emerald-100 text-emerald-700 animate-background-shine bg-[linear-gradient(110deg,rgb(209_250_229),45%,rgb(236_253_245),55%,rgb(209_250_229))] bg-[length:200%_100%]":
+        AVAILABLE_TO_WORK,
     },
     {
       "border-gray-400 bg-gray-100 text-gray-600": !AVAILABLE_TO_WORK,
