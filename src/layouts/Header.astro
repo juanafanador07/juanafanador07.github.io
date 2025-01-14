@@ -1,0 +1,151 @@
+---
+import { Icon } from "astro-icon/components";
+
+const links = [
+  {
+    text: "Experiencia",
+    href: "#experience",
+  },
+  {
+    text: "Proyectos",
+    href: "#proyects",
+  },
+  {
+    text: "Habilidades",
+    href: "#skills",
+  },
+  {
+    text: "Sobre Mí",
+    href: "#about",
+  },
+  {
+    text: "Contacto",
+    href: "mailto:juanafanador07@gmail.com",
+  },
+];
+---
+
+<div class="sm:hidden w-screen h-screen fixed top-0 z-10" header-menu-out></div>
+<header
+  class="fixed flex flex-col items-end gap-2 z-10 top-4 right-4 sm:top-2 sm:right-1/2 sm:translate-x-1/2"
+>
+  <div
+    class="sm:hidden bg-white shadow-xl rounded-xl bg-opacity-75 backdrop-blur-md p-2 w-fit cursor-pointer hover:text-emerald-500 hover:scale-105 transition-all active:scale-100"
+    data-header-menu
+  >
+    <Icon name="material-symbols:menu-rounded" size="32" />
+  </div>
+
+  <nav
+    class="hidden sm:block sm:py-2 py-4 px-4 bg-white shadow-xl rounded-xl bg-opacity-75 backdrop-blur-md sm:animate-none"
+    data-header-menu-target
+  >
+    <ul class="flex flex-col sm:flex-row gap-5 text-nowrap text-sm">
+      {
+        links.map((link) => {
+          return (
+            <li>
+              <a
+                href={link.href}
+                class="hover:text-emerald-600 transition-all"
+                data-target-id={link.href.startsWith("#") ? link.href : null}
+              >
+                {link.text}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const linkElems = document.querySelectorAll("header a[data-target-id]");
+
+  for (const linkElem of linkElems) {
+    if (!(linkElem instanceof HTMLElement)) {
+      continue;
+    }
+
+    const observer = new IntersectionObserver(
+      (e) => {
+        handleObserverEvent(e, linkElem);
+      },
+      {
+        rootMargin: "-50% 0px -50% 0px",
+      }
+    );
+
+    if (!linkElem.dataset.targetId) {
+      continue;
+    }
+
+    const target = document.querySelector(linkElem.dataset.targetId);
+
+    if (!target) {
+      continue;
+    }
+
+    observer.observe(target);
+  }
+
+  function handleObserverEvent(
+    observer: IntersectionObserverEntry[],
+    linkElem: HTMLElement
+  ) {
+    if (observer[0].isIntersecting) {
+      linkElem.classList.add("text-emerald-500");
+    } else {
+      linkElem.classList.remove("text-emerald-500");
+    }
+  }
+</script>
+<script>
+  const menuElem = document.querySelector("[data-header-menu]");
+  const linksElem = document.querySelector("[data-header-menu-target]");
+  const outerElem = document.querySelector("[header-menu-out]");
+  let menuOpen = false;
+
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+
+    if (menuOpen) {
+      outerElem?.classList.remove("hidden");
+      linksElem?.classList.remove("hidden");
+      linksElem?.classList.remove("animate-popup-close");
+      resetAnimation();
+      linksElem?.classList.add("animate-popup-open");
+    } else {
+      outerElem?.classList.add("hidden");
+      linksElem?.classList.remove("animate-popup-open");
+      resetAnimation();
+      linksElem?.classList.add("animate-popup-close");
+    }
+  }
+
+  function handleAnimationEnd() {
+    if (!menuOpen) {
+      linksElem?.classList.add("hidden");
+    }
+  }
+
+  function resetAnimation() {
+    if (linksElem instanceof HTMLElement) {
+      linksElem.offsetHeight; /* trigger reflow */
+    }
+  }
+
+  menuElem?.addEventListener("click", toggleMenu);
+  linksElem?.addEventListener("animationend", handleAnimationEnd);
+  outerElem?.addEventListener("click", toggleMenu);
+  outerElem?.addEventListener("touchstart", toggleMenu, { passive: true });
+
+  if (linksElem) {
+    linksElem?.classList.add("hidden");
+
+    for (const link of linksElem.querySelectorAll("a")) {
+      link.addEventListener("click", toggleMenu);
+    }
+  }
+</script>

@@ -9,6 +9,7 @@ import Proyects from "@layouts/Proyects.astro";
 import Skills from "@layouts/Skills.astro";
 import presentationImg from "@assets/images/presentation.jpg";
 import { getImage } from "astro:assets";
+import Header from "@layouts/Header.astro";
 
 const optimizedPresentationImg = await getImage({
   src: presentationImg,
@@ -17,7 +18,7 @@ const optimizedPresentationImg = await getImage({
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth motion-reduce:scroll-auto">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <SEO
@@ -40,13 +41,13 @@ const optimizedPresentationImg = await getImage({
     />
   </head>
   <body>
-    <Background>
-      <Hero />
-      <Experience />
-      <Proyects />
-      <Skills />
-      <About />
-      <Footer />
-    </Background>
+    <Background />
+    <Header />
+    <Hero />
+    <Experience />
+    <Proyects />
+    <Skills />
+    <About />
+    <Footer />
   </body>
 </html>
