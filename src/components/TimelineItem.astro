@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import HighlightText from "./ui/HighlightText.astro";
 
 interface Props {
   title: string;
@@ -33,7 +34,10 @@ const slotExist = Astro.slots.has("default");
   </div>
 
   <div class="my-4 mx-8">
-    <h3 class="font-bold text-xl text-emerald-500">{title}</h3>
+    <h3 class="font-bold text-xl">
+      <HighlightText>{title}</HighlightText>
+    </h3>
+
     <a
       class="inline-flex items-center my-1 gap-1 font-bold text-xl"
       href={subtitleUrl}
