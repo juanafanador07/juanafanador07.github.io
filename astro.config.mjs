@@ -4,20 +4,18 @@ import { defineConfig, envField } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import favicons from "astro-favicons";
+import sitemap from "@astrojs/sitemap";
+import robotsTxt from "astro-robots-txt";
 const { ASTRO_SITE } = loadEnv(process.env.ASTRO_SITE || "", process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
   site: ASTRO_SITE,
-  integrations: [
-    tailwind(),
-    icon(),
-    favicons({
-      name: "Portafolio de Juan Afanador",
-      short_name: "Portafolio",
-      themes: ["#ecfdf5", "#022c22"],
-    }),
-  ],
+  integrations: [tailwind(), icon(), favicons({
+    name: "Portafolio de Juan Afanador",
+    short_name: "Portafolio",
+    themes: ["#ecfdf5", "#022c22"],
+  }), sitemap(), robotsTxt()],
   env: {
     schema: {
       AVAILABLE_TO_WORK: envField.boolean({
