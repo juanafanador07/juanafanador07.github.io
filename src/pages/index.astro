@@ -1,4 +1,9 @@
 ---
+import "@fontsource/lexend-deca/400.css";
+import "@fontsource/lexend-deca/700.css";
+import lexendDecaRegular from "@fontsource/lexend-deca/files/lexend-deca-latin-400-normal.woff2?url";
+import lexendDecaBold from "@fontsource/lexend-deca/files/lexend-deca-latin-700-normal.woff2?url";
+import { getImage } from "astro:assets";
 import { SEO } from "astro-seo";
 import Background from "@components/Background.astro";
 import About from "@layouts/About.astro";
@@ -8,7 +13,6 @@ import Hero from "@layouts/Hero.astro";
 import Proyects from "@layouts/Proyects.astro";
 import Skills from "@layouts/Skills.astro";
 import presentationImg from "@assets/images/presentation.jpg";
-import { getImage } from "astro:assets";
 import Header from "@layouts/Header.astro";
 
 const optimizedPresentationImg = await getImage({
@@ -21,6 +25,20 @@ const optimizedPresentationImg = await getImage({
 <html lang="es" class="scroll-smooth motion-reduce:scroll-auto">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={lexendDecaRegular}
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={lexendDecaBold}
+      crossorigin="anonymous"
+    />
     <SEO
       charset="UTF-8"
       title="Juan Afanador | Desarrollador Web"
