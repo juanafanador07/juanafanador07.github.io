@@ -25,7 +25,11 @@ const links = [
 ];
 ---
 
-<div class="sm:hidden w-screen h-screen fixed top-0 z-10" header-menu-out></div>
+<div
+  class="hidden sm:hidden w-screen h-screen fixed top-0 z-10"
+  data-header-menu-overlay
+>
+</div>
 <header
   class="fixed flex flex-col items-end gap-2 z-10 top-4 right-4 sm:top-2 sm:right-1/2 sm:translate-x-1/2"
 >
@@ -104,20 +108,20 @@ const links = [
 <script>
   const menuElem = document.querySelector("[data-header-menu]");
   const linksElem = document.querySelector("[data-header-menu-target]");
-  const outerElem = document.querySelector("[header-menu-out]");
+  const overlayElem = document.querySelector("[data-header-menu-overlay]");
   let menuOpen = false;
 
   function toggleMenu() {
     menuOpen = !menuOpen;
 
     if (menuOpen) {
-      outerElem?.classList.remove("hidden");
+      overlayElem?.classList.remove("hidden");
       linksElem?.classList.remove("hidden");
       linksElem?.classList.remove("animate-popup-close");
       resetAnimation();
       linksElem?.classList.add("animate-popup-open");
     } else {
-      outerElem?.classList.add("hidden");
+      overlayElem?.classList.add("hidden");
       linksElem?.classList.remove("animate-popup-open");
       resetAnimation();
       linksElem?.classList.add("animate-popup-close");
@@ -138,8 +142,8 @@ const links = [
 
   menuElem?.addEventListener("click", toggleMenu);
   linksElem?.addEventListener("animationend", handleAnimationEnd);
-  outerElem?.addEventListener("click", toggleMenu);
-  outerElem?.addEventListener("touchstart", toggleMenu, { passive: true });
+  overlayElem?.addEventListener("click", toggleMenu);
+  overlayElem?.addEventListener("touchstart", toggleMenu, { passive: true });
 
   if (linksElem) {
     linksElem?.classList.add("hidden");
