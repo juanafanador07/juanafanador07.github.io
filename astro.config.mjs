@@ -1,15 +1,17 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import favicons from "astro-favicons";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
-    tailwind(),
     icon(),
     favicons({
       name: "Portafolio de Juan Afanador",

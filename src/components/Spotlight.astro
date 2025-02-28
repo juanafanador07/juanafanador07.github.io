@@ -9,7 +9,10 @@ const { color = "from-white", class: classList } = Astro.props;
 
 <div class:list={[classList, "relative"]} data-spotlight>
   <div
-    class:list={["absolute -inset-px transition opacity-0", color]}
+    class:list={[
+      "absolute -inset-px transition opacity-0 rounded-[inherit]",
+      color,
+    ]}
     data-spotlight-layer
   >
   </div>
@@ -47,7 +50,7 @@ const { color = "from-white", class: classList } = Astro.props;
 
   function setSpotlightPosition(index: number, pos: { x: number; y: number }) {
     const lightLayer = lightLayers[index];
-    lightLayer.style.background = `radial-gradient(128px circle at ${pos.x}px ${pos.y}px, var(--tw-gradient-stops))`;
+    lightLayer.style.background = `radial-gradient(128px circle at ${pos.x}px ${pos.y}px, var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))`;
   }
 
   const throttledMouseMove = throttle(mouseMove, 10);

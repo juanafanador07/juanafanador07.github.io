@@ -43,12 +43,12 @@ import Spotlight from "@components/Spotlight.astro";
 
   <Tilt class="w-5/6 order-2 row-span-2 self-center justify-self-center">
     <Spotlight
-      class="relative pt-[107.89%] h-0 bg-white shadow-xl rounded-sm rotate-2 overflow-hidden"
+      class="relative pt-[107.89%] h-0 bg-white shadow-xl rounded-xs rotate-2 overflow-hidden"
     >
       <Picture
         src={aboutImg}
         alt="Retrato de Juan Afanador, usando la camisa de SIAWEB."
-        class="absolute -inset-0 w-11/12 mx-auto mt-[3.66%] rounded -z-10"
+        class="absolute -inset-0 w-11/12 mx-auto mt-[3.66%] rounded-sm -z-10"
         widths={[256, 384, 512, 768, 1024]}
         sizes="(max-width: 639px) 66vw, 23vw"
         formats={["avif", "webp"]}
