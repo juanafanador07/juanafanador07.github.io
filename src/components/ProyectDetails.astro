@@ -5,6 +5,7 @@ import Badge from "@components/ui/Badge.astro";
 import Button from "@components/ui/Button.astro";
 import ProyectImageDisplay from "@components/ProyectImageDisplay.astro";
 import Spotlight from "./Spotlight.astro";
+import { UMAMI_ENABLE } from "astro:env/client";
 
 interface Props {
   title: string;
@@ -98,10 +99,27 @@ const langsArr = new Map<string, LangData>([
         <Button
           href={repositoryUrl}
           icon="material-symbols:folder-code-outline-rounded"
+          customAttrs={UMAMI_ENABLE
+            ? {
+                "data-umami-event": "View project code",
+                "data-umami-event-project": title,
+              }
+            : undefined}
         >
           Código
         </Button>
-        <Button href={livePreviewUrl} icon="mdi:eye-outline"> Ver </Button>
+        <Button
+          href={livePreviewUrl}
+          icon="mdi:eye-outline"
+          customAttrs={UMAMI_ENABLE
+            ? {
+                "data-umami-event": "View project demo",
+                "data-umami-event-project": title,
+              }
+            : undefined}
+        >
+          Ver
+        </Button>
       </div>
     </div>
   </div>

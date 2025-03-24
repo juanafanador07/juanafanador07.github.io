@@ -45,6 +45,9 @@ jobs:
       - name: Build with Astro
         env:
           AVAILABLE_TO_WORK: ${{ vars.AVAILABLE_TO_WORK }}
+          UMAMI_ENABLE: ${{ vars.UMAMI_ENABLE }}
+          UMAMI_SCRIPT: ${{ vars.UMAMI_SCRIPT }}
+          UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
         run: |
           pnpm astro build \
             --site "${{ steps.pages.outputs.origin }}" \

@@ -1,4 +1,5 @@
 ---
+import { UMAMI_ENABLE } from "astro:env/client";
 import { Picture } from "astro:assets";
 import AvailableToWorkBadge from "@components/AvailableToWorkBadge.astro";
 import Heading from "@components/ui/Heading.astro";
@@ -31,12 +32,23 @@ import profileImg from "@assets/images/profile.jpeg";
     <Button
       href="mailto:juanafanador07@gmail.com"
       icon="material-symbols:mail-outline-rounded"
+      customAttrs={UMAMI_ENABLE
+        ? {
+            "data-umami-event": "Contact",
+            "data-umami-event-location": "Hero",
+          }
+        : undefined}
     >
       Contáctame
     </Button>
     <Button
       href="https://github.com/juanafanador07/"
       icon="simple-icons:github"
+      customAttrs={UMAMI_ENABLE
+        ? {
+            "data-umami-event": "View GitHub",
+          }
+        : undefined}
     >
       GitHub
     </Button>

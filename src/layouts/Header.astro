@@ -1,7 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
+import { UMAMI_ENABLE } from "astro:env/client";
 
-const links = [
+interface HeaderLinks {
+  text: string;
+  href: string;
+  customAttrs?: {
+    [key: string]: string;
+  };
+}
+
+const links: HeaderLinks[] = [
   {
     text: "Experiencia",
     href: "#experience",
@@ -21,6 +30,12 @@ const links = [
   {
     text: "Contacto",
     href: "mailto:juanafanador07@gmail.com",
+    customAttrs: UMAMI_ENABLE
+      ? {
+          "data-umami-event": "Contact",
+          "data-umami-event-location": "Header",
+        }
+      : undefined,
   },
 ];
 ---
@@ -53,6 +68,7 @@ const links = [
                 href={link.href}
                 class="hover:text-emerald-600 transition-all"
                 data-target-id={link.href.startsWith("#") ? link.href : null}
+                {...link.customAttrs}
               >
                 {link.text}
               </a>

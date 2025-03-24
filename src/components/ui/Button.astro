@@ -7,9 +7,18 @@ interface Props {
   href: string;
   icon?: string;
   target?: string;
+  customAttrs?: {
+    [key: string]: string;
+  };
 }
 
-const { class: className, icon, href, target = "_blank" } = Astro.props;
+const {
+  class: className,
+  icon,
+  href,
+  target = "_blank",
+  customAttrs = {},
+} = Astro.props;
 ---
 
 <a
@@ -19,6 +28,7 @@ const { class: className, icon, href, target = "_blank" } = Astro.props;
     className,
     "inline-flex items-center justify-center p-[2px] rounded-xl overflow-hidden text-white font-bold bg-linear-to-r from-emerald-600 to-teal-600",
   ]}
+  {...customAttrs}
 >
   <Spotlight color="from-emerald-50 active:from-emerald-600">
     <div

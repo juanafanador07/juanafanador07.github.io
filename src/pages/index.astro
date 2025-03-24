@@ -4,6 +4,7 @@ import "@fontsource/lexend-deca/700.css";
 import "@styles/global.css";
 import lexendDecaRegular from "@fontsource/lexend-deca/files/lexend-deca-latin-400-normal.woff2?url";
 import lexendDecaBold from "@fontsource/lexend-deca/files/lexend-deca-latin-700-normal.woff2?url";
+import { UMAMI_ENABLE, UMAMI_SCRIPT, UMAMI_WEBSITE_ID } from "astro:env/client";
 import { getImage } from "astro:assets";
 import { SEO } from "astro-seo";
 import Background from "@components/Background.astro";
@@ -60,6 +61,11 @@ const optimizedPresentationImg = await getImage({
         },
       }}
     />
+    {
+      UMAMI_ENABLE && (
+        <script defer src={UMAMI_SCRIPT} data-website-id={UMAMI_WEBSITE_ID} />
+      )
+    }
   </head>
   <body>
     <Background />

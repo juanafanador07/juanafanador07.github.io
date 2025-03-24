@@ -28,6 +28,22 @@ export default defineConfig({
         context: "client",
         optional: false,
       }),
+      UMAMI_ENABLE: envField.boolean({
+        default: false,
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
+      UMAMI_SCRIPT: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
+      UMAMI_WEBSITE_ID: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
     },
   },
 });

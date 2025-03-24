@@ -1,4 +1,5 @@
 ---
+import { UMAMI_ENABLE } from "astro:env/client";
 import Section from "@components/ui/Section.astro";
 import TimelineItem from "@components/TimelineItem.astro";
 import TitleIcon from "@components/TitleIcon.astro";
@@ -59,6 +60,9 @@ import { Icon } from "astro-icon/components";
         href="https://www.credly.com/users/juanafanador07"
         target="_blank"
         class="flex items-center gap-2 my-4"
+        {...UMAMI_ENABLE && {
+          "data-umami-event": "View certs",
+        }}
       >
         <Icon name="material-symbols:add-rounded" />
         Ver más
