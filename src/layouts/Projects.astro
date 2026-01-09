@@ -1,0 +1,51 @@
+---
+import Section from "@components/ui/Section.astro";
+import TitleIcon from "@components/TitleIcon.astro";
+import climappImg from "@assets/images/climapp.jpg";
+import sisgelabImg from "@assets/images/sisgelab.png";
+import horarioappImg from "@assets/images/horarioapp.png";
+import ProjectDetails from "@components/ProjectDetails.astro";
+---
+
+<Section id="proyects" class="my-20">
+  <TitleIcon icon="material-symbols:code-rounded"> Proyectos </TitleIcon>
+
+  <div class="space-y-5">
+    <ProjectDetails
+      title="HorarioApp"
+      langs={["REACT", "TAILWIND", "SPRING", "PYTHON"]}
+      image={horarioappImg}
+      imageAlt="Página principal de Climapp, con el cuadro de búsqueda."
+      repositoryUrl="https://github.com/juanafanador07/HorarioApp-frontend/"
+      livePreviewUrl="https://horarioapp.demo.0025600.xyz/"
+    >
+      Aplicación web basada en microservicios que integra herramientas de
+      inteligencia artificial para facilitar a los estudiantes de ingeniería de
+      sistemas la creación de horarios académicos personalizados.
+    </ProjectDetails>
+    <ProjectDetails
+      title="SISGELAB"
+      langs={["REACT", "TAILWIND", "SPRING"]}
+      image={sisgelabImg}
+      imageAlt="Página principal de Climapp, con el cuadro de búsqueda."
+      repositoryUrl="https://github.com/juanafanador07/SISGELAB-frontend/"
+      livePreviewUrl="https://sisgelab.demo.0025600.xyz/"
+    >
+      Sistema de gestión para el Laboratorio de Fabricación Digital (FabLab) de
+      la Universidad Francisco de Paula Santander (UFPS), que centraliza la
+      administración de capacitaciones, instructores y participantes.
+    </ProjectDetails>
+    <ProjectDetails
+      title="Climapp"
+      langs={["HTML", "CSS", "JAVASCRIPT", "EXPRESS"]}
+      image={climappImg}
+      imageAlt="Página principal de Climapp, con el cuadro de búsqueda."
+      repositoryUrl="https://github.com/juanafanador07/climapp/"
+      livePreviewUrl="https://climmap.onrender.com/"
+    >
+      Consulta el clima de cualquier ciudad de forma rápida y sencilla.
+      Configura la temperatura en Celsius o Fahrenheit y elige entre modo claro
+      u oscuro para una experiencia personalizada.
+    </ProjectDetails>
+  </div>
+</Section>

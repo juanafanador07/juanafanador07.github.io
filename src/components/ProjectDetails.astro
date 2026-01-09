@@ -3,7 +3,7 @@ import type { ImageMetadata } from "astro";
 import Heading from "@components/ui/Heading.astro";
 import Badge from "@components/ui/Badge.astro";
 import Button from "@components/ui/Button.astro";
-import ProyectImageDisplay from "@components/ProyectImageDisplay.astro";
+import ProjectImageDisplay from "@components/ProjectImageDisplay.astro";
 import Spotlight from "./Spotlight.astro";
 import { UMAMI_ENABLE } from "astro:env/client";
 
@@ -63,12 +63,48 @@ const langsArr = new Map<string, LangData>([
       background: "bg-slate-50",
     },
   ],
+  [
+    "REACT",
+    {
+      text: "React",
+      icon: "devicon:react",
+      border: "border-cyan-300",
+      background: "bg-cyan-50",
+    },
+  ],
+  [
+    "TAILWIND",
+    {
+      text: "Tailwind CSS",
+      icon: "devicon:tailwindcss",
+      border: "border-blue-300",
+      background: "bg-blue-50",
+    },
+  ],
+  [
+    "SPRING",
+    {
+      text: "Spring",
+      icon: "devicon:spring",
+      border: "border-green-300",
+      background: "bg-green-50",
+    },
+  ],
+  [
+    "PYTHON",
+    {
+      text: "Python",
+      icon: "devicon:python",
+      border: "border-yellow-300",
+      background: "bg-yellow-50",
+    },
+  ],
 ]);
 ---
 
 <Spotlight>
   <div class="grid md:grid-cols-2 gap-10 items-start">
-    <ProyectImageDisplay image={image} imageAlt={imageAlt} />
+    <ProjectImageDisplay image={image} imageAlt={imageAlt} />
     <div>
       <Heading level={3}>{title}</Heading>
       <div class="flex gap-2 flex-wrap my-5">
