@@ -28,6 +28,9 @@ importers:
       "@iconify-json/mdi":
         specifier: ^1.2.3
         version: 1.2.3
+      "@iconify-json/ri":
+        specifier: ^1.2.7
+        version: 1.2.7
       "@iconify-json/simple-icons":
         specifier: ^1.2.65
         version: 1.2.65
@@ -49,6 +52,15 @@ importers:
       astro-seo:
         specifier: ^0.8.4
         version: 0.8.4(prettier-plugin-astro@0.14.1)(prettier@3.7.4)(typescript@5.9.3)
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^3.4.0
+        version: 3.4.0
       tailwindcss:
         specifier: ^4.1.18
         version: 4.1.18
@@ -742,6 +754,12 @@ packages:
     resolution:
       {
         integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==,
+      }
+
+  "@iconify-json/ri@1.2.7":
+    resolution:
+      {
+        integrity: sha512-j/Fkb8GlWY5y/zLj1BGxWRtDzuJFrI7562zLw+iQVEykieBgew43+r8qAvtSajvb75MfUIHjsNOYQPRD8FfLfw==,
       }
 
   "@iconify-json/simple-icons@1.2.65":
@@ -1988,6 +2006,12 @@ packages:
         integrity: sha512-Wdy2Igu8OcBpI2pZePZ5oWjPC38tmDVx5WKUXKwlLYkA0ozo85sLsLvkBbBn/sZaSCMFOGZJ14fvW9t5/d7kdA==,
       }
     engines: { node: ">=8" }
+
+  class-variance-authority@0.7.1:
+    resolution:
+      {
+        integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==,
+      }
 
   cli-boxes@3.0.0:
     resolution:
@@ -3979,6 +4003,12 @@ packages:
     engines: { node: ">=16" }
     hasBin: true
 
+  tailwind-merge@3.4.0:
+    resolution:
+      {
+        integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==,
+      }
+
   tailwindcss@4.1.18:
     resolution:
       {
@@ -5018,6 +5048,10 @@ snapshots:
     dependencies:
       "@iconify/types": 2.0.0
 
+  "@iconify-json/ri@1.2.7":
+    dependencies:
+      "@iconify/types": 2.0.0
+
   "@iconify-json/simple-icons@1.2.65":
     dependencies:
       "@iconify/types": 2.0.0
@@ -5789,6 +5823,10 @@ snapshots:
   chownr@3.0.0: {}
 
   ci-info@4.3.1: {}
+
+  class-variance-authority@0.7.1:
+    dependencies:
+      clsx: 2.1.1
 
   cli-boxes@3.0.0: {}
 
@@ -7200,6 +7238,8 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
       sax: 1.4.4
+
+  tailwind-merge@3.4.0: {}
 
   tailwindcss@4.1.18: {}
 

@@ -1,42 +1,45 @@
 ---
+import { cva, type VariantProps } from "class-variance-authority";
 import Spotlight from "@components/Spotlight.astro";
 import { Icon } from "astro-icon/components";
+import type { HTMLTag, Polymorphic } from "astro/types";
+import { cn } from "@utils/cn";
 
-interface Props {
-  class?: string;
-  href: string;
-  icon?: string;
-  target?: string;
-  customAttrs?: {
-    [key: string]: string;
-  };
-}
+const button = cva("inline-flex gap-2 items-center rounded-xl font-bold", {
+  variants: {
+    variant: {
+      primary:
+        "bg-red-500 text-white border-2 border-emerald-600 bg-linear-to-r from-emerald-500 to-teal-500",
+      secondary: "text-emerald-500 bg-white border-2 border-current",
+    },
+    size: {
+      default: "px-2 py-1",
+      lg: "p-3",
+      icon: "p-2",
+    },
+  },
+});
+
+type Props<Tag extends HTMLTag> = Polymorphic<
+  {
+    as: Tag;
+    icon?: string;
+  } & VariantProps<typeof button>
+>;
 
 const {
-  class: className,
+  as: Tag = "button",
   icon,
-  href,
-  target = "_blank",
-  customAttrs = {},
+  class: className,
+  variant = "primary",
+  size = "default",
+  ...props
 } = Astro.props;
 ---
 
-<a
-  href={href}
-  target={target}
-  class:list={[
-    className,
-    "inline-flex items-center justify-center p-[2px] rounded-xl overflow-hidden text-white font-bold bg-linear-to-r from-emerald-600 to-teal-600",
-  ]}
-  {...customAttrs}
->
-  <Spotlight color="from-emerald-50 active:from-emerald-600">
-    <div
-      class="inline-flex items-center gap-2 py-1 px-2 rounded-[10px] bg-linear-to-r from-emerald-500 to-teal-500"
-    >
-      {icon && <Icon name={icon} size={20} />}
-
-      <slot />
-    </div>
-  </Spotlight>
-</a>
+<Spotlight class={className}>
+  <Tag class={cn(button({ variant, size }))} {...props}>
+    {icon && <Icon name={icon} size={24} />}
+    <slot />
+  </Tag>
+</Spotlight>

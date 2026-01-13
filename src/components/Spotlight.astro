@@ -10,7 +10,7 @@ const { color = "from-white", class: classList } = Astro.props;
 <div class:list={[classList, "relative"]} data-spotlight>
   <div
     class:list={[
-      "absolute -inset-px transition opacity-0 rounded-[inherit]",
+      "pointer-events-none absolute -inset-px rounded-[inherit] opacity-0 transition",
       color,
     ]}
     data-spotlight-layer
@@ -23,11 +23,11 @@ const { color = "from-white", class: classList } = Astro.props;
   import throttle from "@utils/throttle";
 
   const elems = document.querySelectorAll(
-    "[data-spotlight]"
+    "[data-spotlight]",
   ) as NodeListOf<HTMLElement>;
 
   const lightLayers = document.querySelectorAll(
-    "[data-spotlight] [data-spotlight-layer]"
+    "[data-spotlight] [data-spotlight-layer]",
   ) as NodeListOf<HTMLElement>;
 
   function mouseMove(e: MouseEvent, index: number) {

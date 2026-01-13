@@ -9,7 +9,7 @@ import Section from "@components/ui/Section.astro";
 import profileImg from "@assets/images/profile.jpeg";
 ---
 
-<Section class="my-32">
+<Section class="my-32 space-y-4">
   <div class="flex items-center gap-4">
     <Picture
       src={profileImg}
@@ -17,40 +17,58 @@ import profileImg from "@assets/images/profile.jpeg";
       formats={["avif", "webp"]}
       widths={[64, 128, 256, 325]}
       sizes="4rem"
-      class="rounded-full size-16"
+      class="size-16 rounded-full"
+      loading="eager"
     />
     <AvailableToWorkBadge />
   </div>
-  <Heading level={1} class="my-4">
+  <Heading level={1}>
     Hola, soy <HighlightText>Juan Afanador</HighlightText>
   </Heading>
-  <p class="max-w-md text-xl my-4">
+  <p class="max-w-md text-xl">
     <HighlightText>Estudiante de Ingeniería de Sistemas. </HighlightText>
     Me especializo en el desarrollo de aplicaciones Web.
   </p>
-  <div class="flex gap-4">
+
+  <Button
+    as="a"
+    size="lg"
+    href="/juan-david-afanador-verjel-es.pdf"
+    icon="material-symbols:docs-outline-rounded"
+    data-umami-event="Contact"
+    data-umami-event-location="Hero"
+  >
+    Descargar CV
+  </Button>
+
+  <div class="flex gap-2">
     <Button
+      as="a"
       href="mailto:juanafanador07@gmail.com"
       icon="material-symbols:mail-outline-rounded"
-      customAttrs={UMAMI_ENABLE
-        ? {
-            "data-umami-event": "Contact",
-            "data-umami-event-location": "Hero",
-          }
-        : undefined}
-    >
-      Contáctame
-    </Button>
+      data-umami-event="Contact"
+      data-umami-event-location="Hero"
+      variant="secondary"
+      size="icon"
+      aria-label="Enviar Correo"
+    />
     <Button
+      as="a"
       href="https://github.com/juanafanador07/"
       icon="simple-icons:github"
-      customAttrs={UMAMI_ENABLE
-        ? {
-            "data-umami-event": "View GitHub",
-          }
-        : undefined}
-    >
-      GitHub
-    </Button>
+      data-umami-event="View GitHub"
+      variant="secondary"
+      size="icon"
+      aria-label="Perfil de GitHub"
+    />
+    <Button
+      as="a"
+      href="https://linkedin.com/in/juanafanador07"
+      icon="ri:linkedin-fill"
+      data-umami-event="View LinkedIn"
+      variant="secondary"
+      size="icon"
+      aria-label="Perfil de LinkedIn"
+    />
   </div>
 </Section>

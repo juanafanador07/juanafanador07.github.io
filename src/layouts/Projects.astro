@@ -4,6 +4,7 @@ import TitleIcon from "@components/TitleIcon.astro";
 import climappImg from "@assets/images/climapp.jpg";
 import sisgelabImg from "@assets/images/sisgelab.png";
 import horarioappImg from "@assets/images/horarioapp.png";
+import shiftOrImg from "@assets/images/shift-or.png";
 import ProjectDetails from "@components/ProjectDetails.astro";
 ---
 
@@ -13,7 +14,7 @@ import ProjectDetails from "@components/ProjectDetails.astro";
   <div class="space-y-5">
     <ProjectDetails
       title="HorarioApp"
-      langs={["REACT", "TAILWIND", "SPRING", "PYTHON"]}
+      langs={["REACT", "TAILWIND", "SPRING", "PYTHON", "EXPRESS"]}
       image={horarioappImg}
       imageAlt="Página principal de Climapp, con el cuadro de búsqueda."
       repositoryUrl="https://github.com/juanafanador07/HorarioApp-frontend/"
@@ -36,6 +37,18 @@ import ProjectDetails from "@components/ProjectDetails.astro";
       administración de capacitaciones, instructores y participantes.
     </ProjectDetails>
     <ProjectDetails
+      title="Shift-Or Visualizer"
+      langs={["REACT", "TAILWIND"]}
+      image={shiftOrImg}
+      imageAlt="Página principal de Climapp, con el cuadro de búsqueda."
+      repositoryUrl="https://github.com/juanafanador07/Shift-Or-Visualizer/"
+      livePreviewUrl="https://shift-ot.demo.0025600.xyz/"
+    >
+      Herramienta interactiva para visualizar paso a paso el algoritmo de
+      ordenamiento Shift-Or. Además, incluye un video explicativo del algoritmo
+      y el cálculo de su complejidad algorítmica (Big O).
+    </ProjectDetails>
+    <ProjectDetails
       title="Climapp"
       langs={["HTML", "CSS", "JAVASCRIPT", "EXPRESS"]}
       image={climappImg}
@@ -43,9 +56,9 @@ import ProjectDetails from "@components/ProjectDetails.astro";
       repositoryUrl="https://github.com/juanafanador07/climapp/"
       livePreviewUrl="https://climmap.onrender.com/"
     >
-      Consulta el clima de cualquier ciudad de forma rápida y sencilla.
-      Configura la temperatura en Celsius o Fahrenheit y elige entre modo claro
-      u oscuro para una experiencia personalizada.
+      Aplicación web desarrollada para la consulta del clima en tiempo real
+      mediante la integración de la API de OpenWeatherMap. Incluye conversión de
+      unidades de temperatura y soporte para tema claro y oscuro.
     </ProjectDetails>
   </div>
 </Section>
