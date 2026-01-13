@@ -11,10 +11,42 @@ concurrency:
 
 jobs:
   build-cv:
-    uses: juanafanador07/cv/.github/workflows/build.yaml@master
-    with:
-      output-file-english: juan-david-afanador-verjel-en.pdf
-      output-file-spanish: juan-david-afanador-verjel-es.pdf
+    name: Generate CV
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          repository: juanafanador07/cv
+          token: ${{ secrets.CV_REPO_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: "pip"
+          pip-install: -r requirements.txt
+
+      - name: Generate English CV
+        run: |
+          rendercv render Juan_David_Afanador_Verjel_CV.en.yaml \
+            -d design.yaml \
+            -pdf "dist/juan-david-afanador-verjel-en.pdf" \
+            -nomd -nohtml -nopng
+
+      - name: Generate Spanish CV
+        run: |
+          rendercv render Juan_David_Afanador_Verjel_CV.es.yaml \
+            -d design.yaml \
+            -pdf "dist/juan-david-afanador-verjel-es.pdf" \
+            -nomd -nohtml -nopng
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: cv
+          path: dist
+          if-no-files-found: error
 
   build-pages:
     name: Build Page
@@ -27,10 +59,7 @@ jobs:
       - name: Download CV artifact
         uses: actions/download-artifact@v7
         with:
-          name: build
-          github-token: ${{ secrets.CV_REPO_TOKEN }}
-          repository: juanafanador07/cv
-          run-id: ${{ needs.build-cv.outputs.run_id }}
+          name: cv
           path: public
 
       - name: Install pnpm
