@@ -28,7 +28,7 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           name: build
-          github-token: ${{ secrets.CV_TOKEN }}
+          github-token: ${{ secrets.CV_REPO_TOKEN }}
           repository: juanafanador07/cv
           run-id: ${{ needs.build-cv.outputs.run_id }}
           path: public
