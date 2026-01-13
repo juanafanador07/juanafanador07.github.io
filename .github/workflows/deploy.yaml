@@ -15,8 +15,6 @@ jobs:
     with:
       output-file-english: juan-david-afanador-verjel-en.pdf
       output-file-spanish: juan-david-afanador-verjel-es.pdf
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.CV_REPO_TOKEN }}
 
   build-pages:
     name: Build Page
