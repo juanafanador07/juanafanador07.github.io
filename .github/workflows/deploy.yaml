@@ -31,14 +31,14 @@ jobs:
         run: |
           rendercv render Juan_David_Afanador_Verjel_CV.en.yaml \
             -d design.yaml \
-            -pdf "dist/juan-david-afanador-verjel-en.pdf" \
+            -pdf "dist/${{ vars.CV_ENGLISH_FILE }}" \
             -nomd -nohtml -nopng
 
       - name: Generate Spanish CV
         run: |
           rendercv render Juan_David_Afanador_Verjel_CV.es.yaml \
             -d design.yaml \
-            -pdf "dist/juan-david-afanador-verjel-es.pdf" \
+            -pdf "dist/${{ vars.CV_SPANISH_FILE }}" \
             -nomd -nohtml -nopng
 
       - name: Upload artifacts
@@ -87,6 +87,8 @@ jobs:
           UMAMI_ENABLE: ${{ vars.UMAMI_ENABLE }}
           UMAMI_SCRIPT: ${{ vars.UMAMI_SCRIPT }}
           UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
+          CV_ENGLISH_FILE: ${{ vars.CV_ENGLISH_FILE }}
+          CV_SPANISH_FILE: ${{ vars.CV_SPANISH_FILE }}
         run: |
           pnpm astro build \
             --site "${{ steps.pages.outputs.origin }}" \

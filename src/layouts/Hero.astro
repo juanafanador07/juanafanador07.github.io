@@ -1,5 +1,5 @@
 ---
-import { UMAMI_ENABLE } from "astro:env/client";
+import { CV_SPANISH_FILE } from "astro:env/client";
 import { Picture } from "astro:assets";
 import AvailableToWorkBadge from "@components/AvailableToWorkBadge.astro";
 import Heading from "@components/ui/Heading.astro";
@@ -33,7 +33,7 @@ import profileImg from "@assets/images/profile.jpeg";
   <Button
     as="a"
     size="lg"
-    href="/juan-david-afanador-verjel-es.pdf"
+    href={CV_SPANISH_FILE}
     icon="material-symbols:docs-outline-rounded"
     data-umami-event="Contact"
     data-umami-event-location="Hero"

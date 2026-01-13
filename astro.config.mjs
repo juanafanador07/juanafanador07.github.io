@@ -44,6 +44,16 @@ export default defineConfig({
         context: "client",
         optional: true,
       }),
+      CV_ENGLISH_FILE: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
+      CV_SPANISH_FILE: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
     },
   },
 });
